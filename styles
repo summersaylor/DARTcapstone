@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+/*import fonts from Google API*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+#background{
+	background-color:#17407a;/*DART blue*/
+	width:50%;/*color is only half size of the width*/
+	height:100%;/*color runs full length of screen*/
+	position: fixed;
+    top: 0;/*start color at top of page*/
+    right: 0;/*make color be in top right of page*/
+	z-index:-1;/*put DART blue color behind all other elements on right side*/
+}
+.darkSide{
+	color:#ccc;/*text against dark background is grey*/
+}
+.lightSide{
+	color:#fcd306;/*text against white background is DART yellow*/
+}
+
+#title{/*title of document (at top)*/
+	text-align:center;	
+	font-family:Roboto;
+	font-size:3em;
+	color: #bbb;
+  	/*-webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: white;*/
+}
+.sectionTitleBlue{/*title of each section in blue*/
+	font-family:Roboto;
+	color:#17407a;
+}
+.sectionTitleYellow{/*title of each section in yellow*/
+	font-family:Roboto;
+	color:white;
+}
+
+.row{
+	padding-top:2em;	
+}
+
+.dartLogo{
+	width:10em;
+	padding-right:.3em;
+	float:left;/*starts dart img at left*/	
+}
+
+.yellowSwatch{
+	width:6em;
+	height:6em;
+	background-color:#fcd306;
+	border: solid .3em white;
+	float:left;/*floats color swatch next to dart img*/
+}
+	.yellowSwatch p{
+		padding-left:.5em;
+	}
+.darkSwatch{
+	width:6em;
+	height:6em;
+	background-color:#17407a;
+	border: solid .3em white;
+	float:left;/*floats color swatch next to other color swatch*/
+}
+	.darkSwatch p{
+		padding-left:.5em;
+		color:white;	
+	}
+	
+.alertBar {
+	height: 2em;	
+	overflow: hidden;
+	position: relative;
+	background-color:#C00;
+	background-image: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(150,0,0,1) 25px, rgba(150,0,0,1) 40px);
+}
+.alertBarText{
+	color:white;
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1.5em;
+	/* starting position */
+	-moz-transform:translateX(70%);
+	-webkit-transform:translateX(70%);	
+	transform:translateX(70%);
+	/* animate this thing! */	
+	-moz-animation: alertBarText 8s linear infinite;
+	-webkit-animation: alertBarText 8s linear infinite;
+	animation: alertBarText 9s linear infinite;
+}
+/* move text on alert bar */
+@-moz-keyframes alertBarText{
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-90%); }
+}
+@-webkit-keyframes alertBarText{
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-90%); }
+}
+@keyframes alertBarText{
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-90%); /* Browser bug fix */
+ -webkit-transform: translateX(-90%); /* Browser bug fix */
+ transform: translateX(-90%); 
+ }
+}
+
+.pressed{
+	background-color:rgba(0,0,0,0.2);/*gives background color of black with opacity of 2*/
+	padding-left:.2em;/*give more space for color around text*/
+	padding-right:.2em;/*give more space for color around text*/
+}
+
+.backButton{
+	width:25%;	
+}
+
+sup{
+	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
+	padding-right:.2em;
+}
+
+/*********************************************incrementing numbers*********************************************/
+#childNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/
+}
+#childNumberDarkSide{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#fcd306;/*DART Yellow*/
+}
+
+/*********************************************white side signs*********************************************/
+div.left h2{/*targets plus and minus buttons text on white side*/
+	color:#17407a;	
+}
+.signs{/*grey circle behind plus or minus button*/
+	background-color:#aaa;
+	border-radius:1em;
+	width:1.5em;
+	height:1.5em;
+}
+.plusSign {/*vertical length*/
+background:white;
+width:.3em;/*width of stick*/
+height:1em;/*vertical length of stick*/
+position:relative;
+margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
+top:.2em;
+}
+.plusSign:before {/*horizontal length*/
+background:white;
+content:"";
+width:1em;/*horizontal length of stick*/
+height:.3em;/*width of stick*/
+position:absolute;/*keeps horizontal piece with vertical piece*/
+top:.35em;/*pushes horizontal piece down from top*/
+left:-.35em;/*pushes horizontal piece over from left*/
+}
+.minusSign {/*horizontal length*/
+background:white;
+width:1em;/*width of stick*/
+height:.3em;/*vertical length of stick*/
+position:relative;
+margin-left:.3em;/*pushes both lengths of plus sign form left margin*/
+top:.6em;
+}
+
+/*********************************************blue side signs*********************************************/
+div.left.darkSide h2{/*targets plus and minus buttons text on blue side*/
+	color:#fcd306;	
+}
+.signsDarkSide{/*grey circle behind plus or minus button*/
+	background-color:#ddd;
+	border-radius:1em;
+	width:1.5em;
+	height:1.5em;
+}
+.plusSignDarkSide {/*vertical length*/
+background:#17407a;
+width:.3em;/*width of stick*/
+height:1em;/*vertical length of stick*/
+position:relative;
+margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
+top:.2em;
+}
+.plusSignDarkSide:before {/*horizontal length*/
+background:#17407a;
+content:"";
+width:1em;/*horizontal length of stick*/
+height:.3em;/*width of stick*/
+position:absolute;/*keeps horizontal piece with vertical piece*/
+top:.35em;/*pushes horizontal piece down from top*/
+left:-.35em;/*pushes horizontal piece over from left*/
+}
+.minusSignDarkSide {/*horizontal length*/
+background:#17407a;
+width:1em;/*width of stick*/
+height:.3em;/*vertical length of stick*/
+position:relative;
+margin-left:.3em;/*pushes both lengths of plus sign form left margin*/
+top:.6em;
+}
+
+.left {/*places all plus and minus buttons left*/
+	display:inline-block;
+}
