@@ -4,14 +4,8 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-#background{
-	background-color:#17407a;/*DART blue*/
-	width:50%;/*color is only half size of the width*/
-	height:100%;/*color runs full length of screen*/
-	position: fixed;
-    top: 0;/*start color at top of page*/
-    right: 0;/*make color be in top right of page*/
-	z-index:-1;/*put DART blue color behind all other elements on right side*/
+.blue{
+	background-color:#17407a;
 }
 .darkSide{
 	color:#ccc;/*text against dark background is grey*/
@@ -19,14 +13,12 @@
 .lightSide{
 	color:#fcd306;/*text against white background is DART yellow*/
 }
-
-#title{/*title of document (at top)*/
+.title{/*title of document (at top)*/
 	text-align:center;	
 	font-family:Roboto;
 	font-size:3em;
-	color: #bbb;
-  	/*-webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: white;*/
+	color: black;
+  	margin-top:0;
 }
 .sectionTitleBlue{/*title of each section in blue*/
 	font-family:Roboto;
@@ -36,38 +28,39 @@
 	font-family:Roboto;
 	color:white;
 }
-
-.row{
+.col-md-3, .col-md-6{
 	padding-top:2em;	
 }
-
 .dartLogo{
 	width:10em;
 	padding-right:.3em;
 	float:left;/*starts dart img at left*/	
 }
 
-.yellowSwatch{
+.yellowSwatch{/*define color swatch*/
 	width:6em;
 	height:6em;
 	background-color:#fcd306;
 	border: solid .3em white;
 	float:left;/*floats color swatch next to dart img*/
 }
-	.yellowSwatch p{
+	.yellowSwatch p{/*move text on swatch*/
 		padding-left:.5em;
 	}
-.darkSwatch{
+.darkSwatch{/*define styles for dark swatch*/
 	width:6em;
 	height:6em;
 	background-color:#17407a;
 	border: solid .3em white;
 	float:left;/*floats color swatch next to other color swatch*/
 }
-	.darkSwatch p{
+	.darkSwatch p{/*move text on color swatch and make white to be legible*/
 		padding-left:.5em;
 		color:white;	
 	}
+#greySwatch{/*give the grey swatch a unique color from dark swatch class it carries*/
+	background-color:#616161;	
+}
 	
 .alertBar {
 	height: 2em;	
@@ -149,29 +142,29 @@ div.left h2{/*targets plus and minus buttons text on white side*/
 	height:1.5em;
 }
 .plusSign {/*vertical length*/
-background:white;
-width:.3em;/*width of stick*/
-height:1em;/*vertical length of stick*/
-position:relative;
-margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
-top:.2em;
+	background:white;
+	width:.3em;/*width of stick*/
+	height:1em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
+	top:.2em;
 }
 .plusSign:before {/*horizontal length*/
-background:white;
-content:"";
-width:1em;/*horizontal length of stick*/
-height:.3em;/*width of stick*/
-position:absolute;/*keeps horizontal piece with vertical piece*/
-top:.35em;/*pushes horizontal piece down from top*/
-left:-.35em;/*pushes horizontal piece over from left*/
+	background:white;
+	content:"";
+	width:1em;/*horizontal length of stick*/
+	height:.3em;/*width of stick*/
+	position:absolute;/*keeps horizontal piece with vertical piece*/
+	top:.35em;/*pushes horizontal piece down from top*/
+	left:-.35em;/*pushes horizontal piece over from left*/
 }
 .minusSign {/*horizontal length*/
-background:white;
-width:1em;/*width of stick*/
-height:.3em;/*vertical length of stick*/
-position:relative;
-margin-left:.3em;/*pushes both lengths of plus sign form left margin*/
-top:.6em;
+	background:white;
+	width:1em;/*width of stick*/
+	height:.3em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.3em;/*pushes both lengths of plus sign from left margin*/
+	top:.6em;
 }
 
 /*********************************************blue side signs*********************************************/
@@ -185,29 +178,29 @@ div.left.darkSide h2{/*targets plus and minus buttons text on blue side*/
 	height:1.5em;
 }
 .plusSignDarkSide {/*vertical length*/
-background:#17407a;
-width:.3em;/*width of stick*/
-height:1em;/*vertical length of stick*/
-position:relative;
-margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
-top:.2em;
+	background:#17407a;
+	width:.3em;/*width of stick*/
+	height:1em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
+	top:.2em;
 }
 .plusSignDarkSide:before {/*horizontal length*/
-background:#17407a;
-content:"";
-width:1em;/*horizontal length of stick*/
-height:.3em;/*width of stick*/
-position:absolute;/*keeps horizontal piece with vertical piece*/
-top:.35em;/*pushes horizontal piece down from top*/
-left:-.35em;/*pushes horizontal piece over from left*/
+	background:#17407a;
+	content:"";
+	width:1em;/*horizontal length of stick*/
+	height:.3em;/*width of stick*/
+	position:absolute;/*keeps horizontal piece with vertical piece*/
+	top:.35em;/*pushes horizontal piece down from top*/
+	left:-.35em;/*pushes horizontal piece over from left*/
 }
 .minusSignDarkSide {/*horizontal length*/
-background:#17407a;
-width:1em;/*width of stick*/
-height:.3em;/*vertical length of stick*/
-position:relative;
-margin-left:.3em;/*pushes both lengths of plus sign form left margin*/
-top:.6em;
+	background:#17407a;
+	width:1em;/*width of stick*/
+	height:.3em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.3em;/*pushes both lengths of plus sign form left margin*/
+	top:.6em;
 }
 
 .left {/*places all plus and minus buttons left*/
