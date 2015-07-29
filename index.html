@@ -18,21 +18,26 @@
 		
 		// Child Counter
 		var childCounter = 0;
+		var childAmount = 0;
 		function childPlus() {
 			if(childCounter >=0)
 			{
 				childCounter = childCounter + 1;
+				childAmount = childAmount + 5;
 			}
 			//Change number to reflect childCounter
 			document.getElementById("childNumber").innerHTML = String(childCounter);
+			document.getElementById("childCost").innerHTML = String(childAmount);
 		}
 		function childMinus() {
 			if(childCounter >0)
 			{
 				childCounter = childCounter - 1;
+				childAmount = childAmount - 5;
 			}
 			// change childNumber to reflect childCounter 
 			document.getElementById("childNumber").innerHTML = String(childCounter);
+			document.getElementById("childCost").innerHTML = String(childAmount);
 		}
 		
 		// Child Counter Dark Side
@@ -134,8 +139,8 @@
         <div class="row">
         	<div class="col-md-6">
             	<h3 class="sectionTitleBlue">Plus & Minus Buttons</h3>
-                    <div class="left">
-                    	<h2><sup>$5.00</sup>Child</h2>
+                    <div class="left">    
+                        <h2><sup>$5.00</sup>Child</h2>
                     </div>
                     <div class="signs left" onclick="childPlus()">
                     	<div class="plusSign"></div>

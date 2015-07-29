@@ -125,6 +125,12 @@ sup{
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
 }
+#childCost{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1em;
+	color:#17407a;/*DART Blue*/
+	line-height:5px;/*fix this*/
+}
 #childNumberDarkSide{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
