@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DART Touch Screen</title>
+    <meta name="description" content="Flat UI Kit for DART Ticket Vending Machine" />
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+    <!-- Latest compiled and minified JavaScript //no jquery yet, just incase I need this line-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    <script type="application/javascript">
+		
+		// Child Counter
+		var childCounter = 0;
+		var childAmount = 0;
+		function childPlus() {
+			if(childCounter >=0)
+			{
+				childCounter = childCounter + 1;
+				childAmount = childAmount + 5;
+			}
+			//Change number to reflect childCounter
+			document.getElementById("childNumber").innerHTML = String(childCounter);
+			document.getElementById("childCost").innerHTML = String(childAmount);
+		}
+		function childMinus() {
+			if(childCounter >0)
+			{
+				childCounter = childCounter - 1;
+				childAmount = childAmount - 5;
+			}
+			// change childNumber to reflect childCounter 
+			document.getElementById("childNumber").innerHTML = String(childCounter);
+			document.getElementById("childCost").innerHTML = String(childAmount);
+		}
+		
+		// Child Counter Dark Side
+		var childCounterDarkSide = 0;
+		function childPlusDarkSide() {
+			if(childCounterDarkSide >=0)
+			{
+				childCounterDarkSide = childCounterDarkSide + 1;
+			}
+			//Change number to reflect childCounter
+			document.getElementById("childNumberDarkSide").innerHTML = String(childCounterDarkSide);
+		}
+		function childMinusDarkSide() {
+			if(childCounterDarkSide >0)
+			{
+				childCounterDarkSide = childCounterDarkSide - 1;
+			}
+			// change childNumber to reflect childCounter 
+			document.getElementById("childNumberDarkSide").innerHTML = String(childCounterDarkSide);
+		}
+		
+	</script>
+</head>
+
+<body>
+
+<!-- container starts -->
+    <section class="container">
+    	<div id="background">
+       
+            <!-- Logo & Question section -->
+            <div class="row">
+                <div class="col-md-2">
+                	<img src="imgs/dartLogoWhite.png" class="dartLogo">
+                    <a href="#"><img src="imgs/blueArrow.png" class="backButton"></a>
+                </div>
+                
+                <div class="col-md-10">
+                	<h1 class="lightSide">Who's riding?</h1>
+                </div>
+            </div><!-- end Logo & Question section-->
+            
+            
+            
+            <!-- Button States & Back Button Options -->
+            <div class="row">
+                <div class="col-md-12">
+                        <h4 class="lightside">Button</h4><h4 class="lightside"><span class="pressed">Button Pressed</span></h4>
+                </div>
+
+            </div><!-- end Button States & Back Button Options -->
+            
+            <!-- Plus & Minus Buttons -->
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>Child</h2>
+                        </div>
+                        <div class="signs right" onclick="childPlus()">
+                            <div class="plusSign"></div>
+                        </div>
+                        <div class="right">
+                            <div id="childNumber">0</div>
+                        </div>
+                        <div class="signs right" onclick="childMinus()">
+                            <div class="minusSign"></div>
+                        </div>
+                </div>
+            </div><!-- end Plus & Minus Buttons -->
+            
+            
+            <!-- Moving Alert Bar -->
+            <div class="row">
+                <div class="col-md-12" id="alertBarPosition">
+                        <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p></div>
+                </div>
+            </div><!-- end Moving Alert Bar -->
+        
+    	</div> <!-- close div background -->  
+    </section><!-- close container ends -->
+</body>
+</html>
