@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/*import fonts from Google API*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+.container{
+	height:5.25in;
+	width:8.5in;
+	position:relative;
+}
+.container:before{
+	position:absolute;
+	background-image:url(../imgs/dartMap.jpg);
+	/*background-size:10.5in 7.25in;make background img larger than viewport (like zoom)*/
+	width: 786px;
+    height: 504px;
+	opacity:.1;
+	background-repeat: no-repeat;
+	background-position:75% 70%;/*move background img left and up*/
+	z-index:-1;
+}
+
+.lightSide{/*question text in yellow*/
+	color:#fcd306;/*text against white background is DART yellow*/
+	float:right;
+}
+
+.dartLogo{
+	width:8em;
+	padding-right:.3em;
+	float:left;/*starts dart img at left*/
+}
+	
+.alertBar {
+	height: 2em;	
+	overflow: hidden;
+	position: relative;
+	background-color:#C00;
+	background-image: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(150,0,0,1) 25px, rgba(150,0,0,1) 40px);
+}
+.alertBarText{
+	color:white;
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1.5em;
+	/* starting position */
+	-moz-transform:translateX(70%);
+	-webkit-transform:translateX(70%);	
+	transform:translateX(70%);
+	/* animate this thing! */	
+	-moz-animation: alertBarText 14s linear infinite;
+	-webkit-animation: alertBarText 14s linear infinite;
+	animation: alertBarText 14s linear infinite;
+}
+#alertBarPosition{
+	bottom:0;
+	position:absolute;/*keeps alert bar at bottom of page*/
+}
+/* move text on alert bar */
+@-moz-keyframes alertBarText{
+ 0%   { -moz-transform: translateX(100%); }/*where text starts on line (90% over to right on screen)*/
+ 100% { -moz-transform: translateX(-40%); }/*how far to the left the text moves off screen before completing the animation*/
+}
+@-webkit-keyframes alertBarText{
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-40%); }
+}
+@keyframes alertBarText{
+ 0%   { 
+ -moz-transform: translateX(100%); 
+ -webkit-transform: translateX(100%); 
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-40%); 
+ -webkit-transform: translateX(-40%); 
+ transform: translateX(-40%); 
+ }
+}
+
+.pressed{
+	background-color:rgba(0,0,0,0.2);/*gives background color of black with opacity of 2*/
+	padding-left:.2em;/*give more space for color around text*/
+	padding-right:.2em;/*give more space for color around text*/
+}
+
+.backButton{
+	width:60%;	
+}
+
+sup{
+	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
+	padding-right:.2em;
+}
+
+/*********************************************incrementing numbers*********************************************/
+#childNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/
+}
+#childCost{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1em;
+	color:#17407a;/*DART Blue*/
+	line-height:5px;/*fix this*/
+}
+#childNumberDarkSide{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#fcd306;/*DART Yellow*/
+}
+
+/*********************************************white side signs*********************************************/
+div.left h2{/*targets plus and minus buttons text on white side*/
+	color:#17407a;	
+}
+.signs{/*grey circle behind plus or minus button*/
+	background-color:#aaa;
+	border-radius:1em;
+	width:1.5em;
+	height:1.5em;
+}
+.plusSign {/*vertical length*/
+	background:white;
+	width:.3em;/*width of stick*/
+	height:1em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
+	top:.2em;
+}
+.plusSign:before {/*horizontal length*/
+	background:white;
+	content:"";
+	width:1em;/*horizontal length of stick*/
+	height:.3em;/*width of stick*/
+	position:absolute;/*keeps horizontal piece with vertical piece*/
+	top:.35em;/*pushes horizontal piece down from top*/
+	left:-.35em;/*pushes horizontal piece over from left*/
+}
+.minusSign {/*horizontal length*/
+	background:white;
+	width:1em;/*width of stick*/
+	height:.3em;/*vertical length of stick*/
+	position:relative;
+	margin-left:.3em;/*pushes both lengths of plus sign from left margin*/
+	top:.6em;
+}
+
+.right {/*places all plus and minus buttons left*/
+	display:inline-block;
+	float:right;
+}
