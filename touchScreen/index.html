@@ -16,7 +16,7 @@
     
     <script type="application/javascript">
 		
-		// Child Counter
+		//Child Counter
 		var childCounter = 0;
 		var childAmount = 0;
 		function childPlus() {
@@ -40,23 +40,100 @@
 			document.getElementById("childCost").innerHTML = String(childAmount);
 		}
 		
-		// Child Counter Dark Side
-		var childCounterDarkSide = 0;
-		function childPlusDarkSide() {
-			if(childCounterDarkSide >=0)
+		//High School Counter
+		var highschoolCounter = 0;
+		var highschoolAmount = 0;
+		function highschoolPlus() {
+			if(highschoolCounter >=0)
 			{
-				childCounterDarkSide = childCounterDarkSide + 1;
+				highschoolCounter = highschoolCounter + 1;
+				highschoolAmount = highschoolAmount + 5;
 			}
 			//Change number to reflect childCounter
-			document.getElementById("childNumberDarkSide").innerHTML = String(childCounterDarkSide);
+			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
+			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
 		}
-		function childMinusDarkSide() {
-			if(childCounterDarkSide >0)
+		function highschoolMinus() {
+			if(highschoolCounter >0)
 			{
-				childCounterDarkSide = childCounterDarkSide - 1;
+				highschoolCounter = highschoolCounter - 1;
+				highschoolAmount = highschoolAmount - 5;
 			}
 			// change childNumber to reflect childCounter 
-			document.getElementById("childNumberDarkSide").innerHTML = String(childCounterDarkSide);
+			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
+			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
+		}
+		
+		//College Counter
+		var collegeCounter = 0;
+		var collegeAmount = 0;
+		function collegePlus() {
+			if(collegeCounter >=0)
+			{
+				collegeCounter = collegeCounter + 1;
+				collegeAmount = collegeAmount + 5;
+			}
+			//Change number to reflect childCounter
+			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
+			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
+		}
+		function collegeMinus() {
+			if(collegeCounter >0)
+			{
+				collegeCounter = collegeCounter - 1;
+				collegeAmount = collegeAmount - 5;
+			}
+			// change childNumber to reflect childCounter 
+			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
+			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
+		}
+		
+		//Adult Counter
+		var adultCounter = 0;
+		var adultAmount = 0;
+		function adultPlus() {
+			if(adultCounter >=0)
+			{
+				adultCounter = adultCounter + 1;
+				adulteAmount = adultAmount + 5;
+			}
+			//Change number to reflect childCounter
+			document.getElementById("adultNumber").innerHTML = String(adultCounter);
+			document.getElementById("adultCost").innerHTML = String(adultAmount);
+		}
+		function adultMinus() {
+			if(adultCounter >0)
+			{
+				adultCounter = adultCounter - 1;
+				adultAmount = adultAmount - 5;
+			}
+			// change childNumber to reflect childCounter 
+			document.getElementById("adultNumber").innerHTML = String(adultCounter);
+			document.getElementById("adultCost").innerHTML = String(adultAmount);
+		}
+		
+		//Senior/Disabled Counter
+		var seniorCounter = 0;
+		var seniorAmount = 0;
+		function seniorPlus() {
+			if(seniorCounter >=0)
+			{
+				seniorCounter = seniorCounter + 1;
+				seniorAmount = seniorAmount + 5;
+			}
+			//Change number to reflect childCounter
+			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
+			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
+		}
+		function seniorMinus() {
+			if(seniorCounter >0)
+			{
+				seniorCounter = seniorCounter - 1;
+				seniorAmount = seniorAmount - 5;
+			}
+			// change childNumber to reflect childCounter 
+			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
+			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
 		}
 		
 	</script>
@@ -90,12 +167,9 @@
 
             </div><!-- end Button States & Back Button Options -->
             
-            <!-- Plus & Minus Buttons -->
+            <!-- Child Row -->
             <div class="row">
                 <div class="col-md-12">
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>Child</h2>
-                        </div>
                         <div class="signs right" onclick="childPlus()">
                             <div class="plusSign"></div>
                         </div>
@@ -105,14 +179,90 @@
                         <div class="signs right" onclick="childMinus()">
                             <div class="minusSign"></div>
                         </div>
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>Child</h2>
+                        </div>
                 </div>
-            </div><!-- end Plus & Minus Buttons -->
+            </div><!-- end Child Row -->
+            
+            <!-- High School Row -->
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="signs right" onclick="highschoolPlus()">
+                            <div class="plusSign"></div>
+                        </div>
+                        <div class="right">
+                            <div id="highschoolNumber">0</div>
+                        </div>
+                        <div class="signs right" onclick="highschoolMinus()">
+                            <div class="minusSign"></div>
+                        </div>
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>High School</h2>
+                        </div>
+                </div>
+            </div><!-- end High School Row -->
+
+			<!-- College Row -->
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="signs right" onclick="collegePlus()">
+                            <div class="plusSign"></div>
+                        </div>
+                        <div class="right">
+                            <div id="collegeNumber">0</div>
+                        </div>
+                        <div class="signs right" onclick="collegeMinus()">
+                            <div class="minusSign"></div>
+                        </div>
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>College/Trade School</h2>
+                        </div>
+                </div>
+            </div><!-- end College Row -->
+            
+            <!-- Adult Row -->
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="signs right" onclick="adultPlus()">
+                            <div class="plusSign"></div>
+                        </div>
+                        <div class="right">
+                            <div id="adultNumber">0</div>
+                        </div>
+                        <div class="signs right" onclick="adultMinus()">
+                            <div class="minusSign"></div>
+                        </div>
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>Adult</h2>
+                        </div>
+                </div>
+            </div><!-- end Adult Row -->
+            
+            <!-- Senior/Disabled Row -->
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="signs right" onclick="seniorPlus()">
+                            <div class="plusSign"></div>
+                        </div>
+                        <div class="right">
+                            <div id="seniorNumber">0</div>
+                        </div>
+                        <div class="signs right" onclick="seniorMinus()">
+                            <div class="minusSign"></div>
+                        </div>
+                        <div class="right">    
+                            <h2><sup>$5.00</sup>Senior/Disabled</h2>
+                        </div>
+                </div>
+            </div><!-- end Senior/Disabled Row -->
             
             
             <!-- Moving Alert Bar -->
             <div class="row">
                 <div class="col-md-12" id="alertBarPosition">
-                        <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p></div>
+                        <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
+                        </div>
                 </div>
             </div><!-- end Moving Alert Bar -->
         

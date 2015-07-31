@@ -27,8 +27,7 @@
 }
 
 .dartLogo{
-	width:8em;
-	padding-right:.3em;
+	width:7em;
 	float:left;/*starts dart img at left*/
 }
 	
@@ -94,32 +93,33 @@ sup{
 }
 
 /*********************************************incrementing numbers*********************************************/
-#childNumber{
+#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
+	margin-top:-5px;
 }
-#childCost{
+#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:1em;
 	color:#17407a;/*DART Blue*/
-	line-height:5px;/*fix this*/
-}
-#childNumberDarkSide{
-	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
-	color:#fcd306;/*DART Yellow*/
+	/*line-height:5px;/*fix this*/
 }
 
 /*********************************************white side signs*********************************************/
-div.left h2{/*targets plus and minus buttons text on white side*/
-	color:#17407a;	
+/*.row{
+	margin-top:0px;	
+}*/
+div.right h2{/*targets plus and minus buttons text on white side*/
+	color:#17407a;
+	margin-top:-1em;
 }
 .signs{/*grey circle behind plus or minus button*/
 	background-color:#aaa;
 	border-radius:1em;
 	width:1.5em;
 	height:1.5em;
+	margin-top:-1.4em;
 }
 .plusSign {/*vertical length*/
 	background:white;
