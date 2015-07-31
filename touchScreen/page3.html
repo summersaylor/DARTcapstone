@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DART Touch Screen</title>
-    <meta name="description" content="Flat UI Kit for DART Ticket Vending Machine" />
+    <title>DART Touch Screen - 3</title>
+    <meta name="description" content="Page 3 for the Dart Ticket Vending Machine" />
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -95,11 +95,11 @@
 			if(adultCounter >=0)
 			{
 				adultCounter = adultCounter + 1;
-				adulteAmount = adultAmount + 5;
+				adultAmount = adultAmount + 5;
 			}
 			//Change number to reflect childCounter
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
-			document.getElementById("adultCost").innerHTML = String(adultAmount);
+			document.getElementById("adultCost").innerHTML = String("$" + adultAmount);
 		}
 		function adultMinus() {
 			if(adultCounter >0)
@@ -109,7 +109,7 @@
 			}
 			// change childNumber to reflect childCounter 
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
-			document.getElementById("adultCost").innerHTML = String(adultAmount);
+			document.getElementById("adultCost").innerHTML = String("$" + adultAmount);
 		}
 		
 		//Senior/Disabled Counter
@@ -145,108 +145,153 @@
     <section class="container">
     	<div id="background">
        
-            <!-- Logo & Question section -->
+            <!-- Logo -->
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-12">
                 	<img src="imgs/dartLogoWhite.png" class="dartLogo">
-                    <a href="#"><img src="imgs/blueArrow.png" class="backButton"></a>
                 </div>
-                
+            </div><!-- end Logo -->
+            
+            <!-- Back Button & Question -->
+            <div class="row">
+            	<div class="col-md-2">
+                	<a href="page2.html"><img src="imgs/blueArrow.png" class="backButton"></a>
+                </div>
                 <div class="col-md-10">
                 	<h1 class="lightSide">Who's riding?</h1>
                 </div>
-            </div><!-- end Logo & Question section-->
+            </div><!-- end Back Button & Question -->
             
             <!-- Child Row -->
             <div class="row">
-                <div class="col-md-12">
-                        <div class="signs right" onclick="childPlus()">
-                            <div class="plusSign"></div>
-                        </div>
-                        <div class="right">
-                            <div id="childNumber">0</div>
-                        </div>
-                        <div class="signs right" onclick="childMinus()">
-                            <div class="minusSign"></div>
-                        </div>
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>Child</h2>
-                        </div>
+                <div class="col-md-11">
+                    <div class="signs right" onclick="childPlus()">
+                        <div class="plusSign"></div>
+                    </div>
+                    <div class="right">
+                    	<div id="childNumber">0</div>
+                    </div>
+                    <div class="signs right" onclick="childMinus()">
+                        <div class="minusSign"></div>
+                    </div>
+                    <div class="right">    
+                        <h2><sup>$5.00</sup>Child</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-1">
+                	<div class="right">
+                    	<div id="childCost">0.00</div>
+                    </div>
                 </div>
             </div><!-- end Child Row -->
             
             <!-- High School Row -->
             <div class="row">
-                <div class="col-md-12">
-                        <div class="signs right" onclick="highschoolPlus()">
-                            <div class="plusSign"></div>
-                        </div>
-                        <div class="right">
-                            <div id="highschoolNumber">0</div>
-                        </div>
-                        <div class="signs right" onclick="highschoolMinus()">
-                            <div class="minusSign"></div>
-                        </div>
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>High School</h2>
-                        </div>
+                <div class="col-md-11">
+                	<div class="signs right" onclick="highschoolPlus()">
+                        <div class="plusSign"></div>
+                    </div>
+                    <div class="right">
+                    	<div id="highschoolNumber">0</div>
+                    </div>
+                    <div class="signs right" onclick="highschoolMinus()">
+                        <div class="minusSign"></div>
+                    </div>
+                    <div class="right">    
+                        <h2><sup>$5.00</sup>High School</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-1">
+                	<div class="right">
+                    	<div id="highschoolCost">0.00</div>
+                    </div>
                 </div>
             </div><!-- end High School Row -->
 
 			<!-- College Row -->
             <div class="row">
-                <div class="col-md-12">
-                        <div class="signs right" onclick="collegePlus()">
-                            <div class="plusSign"></div>
-                        </div>
-                        <div class="right">
-                            <div id="collegeNumber">0</div>
-                        </div>
-                        <div class="signs right" onclick="collegeMinus()">
-                            <div class="minusSign"></div>
-                        </div>
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>College/Trade School</h2>
-                        </div>
+                <div class="col-md-11">
+                	<div class="signs right" onclick="collegePlus()">
+                    	<div class="plusSign"></div>
+                    </div>
+                    <div class="right">
+                        <div id="collegeNumber">0</div>
+                    </div>
+                    <div class="signs right" onclick="collegeMinus()">
+                        <div class="minusSign"></div>
+                    </div>
+                    <div class="right">    
+                        <h2><sup>$5.00</sup>College/Trade School</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-1">
+                	<div class="right">
+                    	<div id="collegeCost">0.00</div>
+                    </div>
                 </div>
             </div><!-- end College Row -->
             
             <!-- Adult Row -->
             <div class="row">
-                <div class="col-md-12">
-                        <div class="signs right" onclick="adultPlus()">
-                            <div class="plusSign"></div>
-                        </div>
-                        <div class="right">
-                            <div id="adultNumber">0</div>
-                        </div>
-                        <div class="signs right" onclick="adultMinus()">
-                            <div class="minusSign"></div>
-                        </div>
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>Adult</h2>
-                        </div>
+                <div class="col-md-11">
+                	<div class="signs right" onclick="adultPlus()">
+                    	<div class="plusSign"></div>
+                    </div>
+                    <div class="right">
+                        <div id="adultNumber">0</div>
+                    </div>
+                    <div class="signs right" onclick="adultMinus()">
+                        <div class="minusSign"></div>
+                    </div>
+                    <div class="right">    
+                        <h2><sup>$5.00</sup>Adult</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-1">
+                	<div class="right">
+                    	<div id="adultCost">0.00</div>
+                    </div>
                 </div>
             </div><!-- end Adult Row -->
             
             <!-- Senior/Disabled Row -->
             <div class="row">
-                <div class="col-md-12">
-                        <div class="signs right" onclick="seniorPlus()">
-                            <div class="plusSign"></div>
-                        </div>
-                        <div class="right">
-                            <div id="seniorNumber">0</div>
-                        </div>
-                        <div class="signs right" onclick="seniorMinus()">
-                            <div class="minusSign"></div>
-                        </div>
-                        <div class="right">    
-                            <h2><sup>$5.00</sup>Senior/Disabled</h2>
-                        </div>
+                <div class="col-md-11">
+                	<div class="signs right" onclick="seniorPlus()">
+                    	<div class="plusSign"></div>
+                    </div>
+                    <div class="right">
+                        <div id="seniorNumber">0</div>
+                    </div>
+                    <div class="signs right" onclick="seniorMinus()">
+                        <div class="minusSign"></div>
+                    </div>
+                    <div class="right">    
+                        <h2><sup>$5.00</sup>Senior/Disabled</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-1">
+                	<div class="right">
+                    	<div id="seniorCost">0.00</div>
+                    </div>
                 </div>
             </div><!-- end Senior/Disabled Row -->
             
+            <!-- Type of Currency Accepted -->
+            <div class="row">
+            	<div class="col-md-4">
+                	<p id="currencyMessage">This machine only accepts coins, bills, and credit cards.</p><p id="changeMessage">Maximum change $20.00</p>
+                </div>
+                <div class="col-md-9">
+                	<!-- total amount will go at the end of this row on the right -->
+                </div>
+            </div>
+            <!-- end Type of Currency Accepted -->
             
             <!-- Moving Alert Bar -->
             <div class="row">

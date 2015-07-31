@@ -76,22 +76,29 @@
  transform: translateX(-40%); 
  }
 }
-
 .pressed{
 	background-color:rgba(0,0,0,0.2);/*gives background color of black with opacity of 2*/
 	padding-left:.2em;/*give more space for color around text*/
 	padding-right:.2em;/*give more space for color around text*/
 }
-
 .backButton{
 	width:60%;	
 }
-
+#currencyMessage{
+	color:#980000;
+	font-size:1.2em;
+	line-height:1em;
+}
+#changeMessage{
+	color:#980000;
+	font-weight:bold;
+	font-size:1.2em;
+	line-height:.2em;	
+}
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
 	padding-right:.2em;
 }
-
 /*********************************************incrementing numbers*********************************************/
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
@@ -101,9 +108,10 @@ sup{
 }
 #childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:1em;
+	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
-	/*line-height:5px;/*fix this*/
+	margin-top:.2em;
+	/*padding-left:.5em;*/
 }
 
 /*********************************************white side signs*********************************************/
@@ -120,6 +128,8 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	width:1.5em;
 	height:1.5em;
 	margin-top:1.3em;
+	/*margin-left:.3em;
+	margin-right:.3em;*/
 }
 .plusSign {/*vertical length*/
 	background:white;
@@ -147,7 +157,7 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	top:.6em;
 }
 
-.right {/*places all plus and minus buttons left*/
+.right {/*places all plus and minus buttons right*/
 	display:inline-block;
 	float:right;
 }
