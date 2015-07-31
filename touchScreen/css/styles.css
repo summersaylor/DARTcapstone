@@ -97,7 +97,7 @@ sup{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
-	margin-top:-5px;
+	margin-top:.2em;
 }
 #childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
@@ -112,14 +112,14 @@ sup{
 }*/
 div.right h2{/*targets plus and minus buttons text on white side*/
 	color:#17407a;
-	margin-top:-1em;
+	line-height:.6em;	
 }
 .signs{/*grey circle behind plus or minus button*/
 	background-color:#aaa;
 	border-radius:1em;
 	width:1.5em;
 	height:1.5em;
-	margin-top:-1.4em;
+	margin-top:1.3em;
 }
 .plusSign {/*vertical length*/
 	background:white;
