@@ -19,163 +19,152 @@
 		//Total Counter
 		var totalAmount = 0;
 		var newTotal;
-		var finalTotal;
+		var finalTotal = 0;
 		
 		//Child Counter
 		var childCounter = 0;//number of child tickets
-		var childTicketCost;//cost of child ticket from spreadsheet
+		var childTicketCost = 5;//cost of child ticket from spreadsheet
 		var childAmount = 0;//total of all child tickets * cost of child ticket
 		function childPlus() {
 			if(childCounter >=0)
 			{
 				childCounter = childCounter + 1;
-				childAmount = childAmount + childTicketCost;
-				newTotal = totalAmount + childAmount;
+				childAmount = childCounter * childTicketCost;
+				finalTotal = finalTotal + childTicketCost;
 			}
 			//Change number to reflect childCounter
 			document.getElementById("childNumber").innerHTML = String(childCounter);
 			document.getElementById("childCost").innerHTML = String(childAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		function childMinus() {
 			if(childCounter >0)
 			{
 				childCounter = childCounter - 1;
-				childAmount = childAmount - childTicketCost;
-				newTotal = childAmount - totalAmount;
+				childAmount = childCounter * childTicketCost;
+				finalTotal = finalTotal - childTicketCost;
 			}
 			// change childNumber to reflect childCounter 
 			document.getElementById("childNumber").innerHTML = String(childCounter);
 			document.getElementById("childCost").innerHTML = String(childAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		
 		//High School Counter
 		var highschoolCounter = 0;//number of highschool tickets
-		var highschoolTicketCost;//cost of highschool ticket from spreadsheet
+		var highschoolTicketCost = 5;//cost of highschool ticket from spreadsheet
 		var highschoolAmount = 0;//total of all highschool tickets * cost of highschool ticket
 		function highschoolPlus() {
 			if(highschoolCounter >=0)
 			{
 				highschoolCounter = highschoolCounter + 1;
-				highschoolAmount = highschoolAmount + highschoolTicketCost;
-				newTotal = totalAmount + highschoolAmount;
+				highschoolAmount = highschoolCounter * highschoolTicketCost;
+				finalTotal = finalTotal + highschoolTicketCost;
 			}
 			//Change number to reflect highschoolCounter
 			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
 			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		function highschoolMinus() {
 			if(highschoolCounter >0)
 			{
 				highschoolCounter = highschoolCounter - 1;
-				highschoolAmount = highschoolAmount - highschoolTicketCost;
-				newTotal = highschoolAmount - totalAmount;
+				highschoolAmount = highschoolCounter * highschoolTicketCost;
+				finalTotal = finalTotal - highschoolTicketCost;
 			}
 			// change highschoolNumber to reflect highschoolCounter 
 			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
 			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		
 		//College Counter
 		var collegeCounter = 0;//number of college tickets
-		var collegeTicketCost;//cost of college ticket from spreadsheet
+		var collegeTicketCost = 5;//cost of college ticket from spreadsheet
 		var collegeAmount = 0;//total of all college tickets * cost of college ticket
 		function collegePlus() {
 			if(collegeCounter >=0)
 			{
 				collegeCounter = collegeCounter + 1;
-				collegeAmount = collegeAmount + collegeTicketCost;
-				newTotal = totalAmount + collegeAmount;
+				collegeAmount = collegeCounter * collegeTicketCost;
+				finalTotal = finalTotal + collegeTicketCost;
 			}
 			//Change number to reflect collegeCounter
 			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
 			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		function collegeMinus() {
 			if(collegeCounter >0)
 			{
 				collegeCounter = collegeCounter - 1;
-				collegeAmount = collegeAmount - collegeTicketCost;
-				newTotal = collegeAmount - totalAmount;
+				collegeAmount = collegeCounter * collegeTicketCost;
+				finalTotal = finalTotal - collegeTicketCost;
 			}
 			// change collegeNumber to reflect collegeCounter 
 			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
 			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		
 		//Adult Counter
 		var adultCounter = 0;//number of adult tickets
-		var adultTicketCost;//cost of adult ticket from spreadsheet
+		var adultTicketCost = 5;//cost of adult ticket from spreadsheet
 		var adultAmount = 0;//total of all adult tickets * cost of adult ticket
 		function adultPlus() {
 			if(adultCounter >=0)
 			{
 				adultCounter = adultCounter + 1;
-				adultAmount = adultAmount + adultTicketCost;
-				newTotal = totalAmount + adultAmount;
+				adultAmount = adultCounter * adultTicketCost;
+				finalTotal = finalTotal + adultTicketCost;
 			}
 			//Change number to reflect adultCounter
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
 			document.getElementById("adultCost").innerHTML = String(adultAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		function adultMinus() {
 			if(adultCounter >0)
 			{
 				adultCounter = adultCounter - 1;
-				adultAmount = adultAmount - adultTicketCost;
-				newTotal = adultAmount - totalAmount;
+				adultAmount = adultCounter * adultTicketCost;
+				finalTotal = finalTotal - adultTicketCost;
 			}
 			// change adultNumber to reflect adultCounter 
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
 			document.getElementById("adultCost").innerHTML = String(adultAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		
 		//Senior/Disabled Counter
 		var seniorCounter = 0;//number of senior tickets
-		var seniorTicketCost;//cost of senior ticket from spreadsheet
+		var seniorTicketCost = 5;//cost of senior ticket from spreadsheet
 		var seniorAmount = 0;//total of all senior tickets * cost of senior ticket
 		function seniorPlus() {
 			if(seniorCounter >=0)
 			{
 				seniorCounter = seniorCounter + 1;
-				seniorAmount = seniorAmount + seniorTicketCost;
-				newTotal = totalAmount + seniorAmount;
-				finalTotalUpdate();
+				seniorAmount = seniorCounter * seniorTicketCost;
+				finalTotal = finalTotal + seniorTicketCost;
 			}
 			//Change number to reflect seniorCounter
 			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
 			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
+			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
 		function seniorMinus() {
 			if(seniorCounter >0)
 			{
 				seniorCounter = seniorCounter - 1;
-				seniorAmount = seniorAmount - seniorTicketCost;
-				newTotal = seniorAmount - totalAmount;
-				finalTotalUpdate();
+				seniorAmount = seniorCounter * seniorTicketCost;
+				finalTotal = finalTotal - seniorTicketCost
 			}
 			// change seniorNumber to reflect seniorCounter 
 			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
 			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
-		}
-		
-		
-		
-		function finalTotalUpdate() {
-			if(childCounter >0 || highschoolCounter >0 || collegeCounter >0 || adultCounter >0 || seniorCounter >0)
-			{
-				finalTotal = finalTotal + newTotal;	
-			}
-			//change totalNumber to reflect totalAmount
 			document.getElementById("totalNumber").innerHTML = String(finalTotal);
 		}
-			//function finalTotalSubtracting() {
-			//if(childCounter >0 || highschoolCounter >0 || collegeCounter >0 || adultCounter >0 || seniorCounter >0)
-			//{
-			//	finalTotal = totalAmount - childAmount- highschoolAmount - collegeAmount - adultAmount - seniorAmount;	
-			//}
-			//change totalNumber to reflect totalAmount
-			//document.getElementById("totalNumber").innerHTML = String(totalAmount);
-		//}
 		
 	</script>
 </head>

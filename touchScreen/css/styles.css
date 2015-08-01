@@ -20,12 +20,15 @@
 	background-position:75% 70%;/*move background img left and up*/
 	z-index:-1;
 }
-
 .lightSide{/*question text in yellow*/
 	color:#fcd306;/*text against white background is DART yellow*/
 	float:right;
 }
-
+#yellowOr{/*fix "or" line height on index.html*/
+	margin-top:1px;	
+	padding-left:.3em;
+	padding-right:.3em;
+}
 .dartLogo{
 	width:7em;
 	float:left;/*starts dart img at left*/
@@ -88,19 +91,40 @@
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
-	margin-bottom:40px;
+	position:fixed;/*places the message across all pages*/
+	left:7.8em;
+	bottom:5.5em;
+	width:14em;
 }
 #changeMessage{
 	color:#980000;
 	font-weight:bold;
 	font-size:1.2em;
 	line-height:.2em;	
-	margin-bottom:10px;
+	position:fixed;/*places the message across all pages*/
+	left:7.8em;
+	bottom:4.6em;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
 	padding-right:.2em;
 }
+.zone{
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+}
+	.zone :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.zone :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.zone :hover{
+		text-decoration:none;
+	}
 .tripDuration{
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/	
@@ -118,11 +142,20 @@ sup{
 		text-decoration:none;
 	}
 /*********************************************incrementing numbers*********************************************/
-#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber, #childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
+#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
 	margin-top:.2em;
+	padding-left:.2em;
+	padding-right:.2em;
+}
+#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/
+	margin-top:.2em;
+	
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
