@@ -2,7 +2,7 @@
 
 /*import fonts from Google API*/
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Roboto);/*use for numbers on page 3*/
 
 .container{
 	height:5.25in;
@@ -88,32 +88,49 @@
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
+	margin-bottom:40px;
 }
 #changeMessage{
 	color:#980000;
 	font-weight:bold;
 	font-size:1.2em;
 	line-height:.2em;	
+	margin-bottom:10px;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
 	padding-right:.2em;
 }
+.tripDuration{
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+}
+	.tripDuration :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.tripDuration :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.tripDuration :hover{
+		text-decoration:none;
+	}
 /*********************************************incrementing numbers*********************************************/
-#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
+#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber, #childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
 	margin-top:.2em;
 }
-#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
+#totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
 	margin-top:.2em;
-	/*padding-left:.5em;*/
+	background-color:#ddd;
 }
-
 /*********************************************white side signs*********************************************/
 /*.row{
 	margin-top:0px;	
