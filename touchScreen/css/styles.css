@@ -141,6 +141,9 @@ sup{
 	.tripDuration :hover{
 		text-decoration:none;
 	}
+#totalText{
+	color:#17407a;/*DART Blue*/
+}
 /*********************************************incrementing numbers*********************************************/
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
@@ -159,10 +162,10 @@ sup{
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
+	font-size:2.6em;
 	color:#17407a;/*DART Blue*/
 	margin-top:.2em;
-	background-color:#ddd;
+	background-color:#eee;
 }
 /*********************************************white side signs*********************************************/
 /*.row{
@@ -172,41 +175,45 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	color:#17407a;
 	line-height:.6em;	
 }
-.signs{/*grey circle behind plus or minus button*/
-	background-color:#aaa;
+/*.signs{/*grey circle behind plus or minus button*/
+	/*background-color:#aaa;
 	border-radius:1em;
 	width:1.5em;
 	height:1.5em;
 	margin-top:1.3em;
 	/*margin-left:.3em;
 	margin-right:.3em;*/
-}
-.plusSign {/*vertical length*/
-	background:white;
+/*}
+/*.plusSign {/*vertical length*/
+	/*background:red;
 	width:.3em;/*width of stick*/
-	height:1em;/*vertical length of stick*/
-	position:relative;
+	/*height:1em;/*vertical length of stick*/
+	/*position:relative;
 	margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
-	top:.2em;
+	/*top:.2em;
 }
 .plusSign:before {/*horizontal length*/
-	background:white;
+	/*background:red;
 	content:"";
 	width:1em;/*horizontal length of stick*/
-	height:.3em;/*width of stick*/
-	position:absolute;/*keeps horizontal piece with vertical piece*/
-	top:.35em;/*pushes horizontal piece down from top*/
-	left:-.35em;/*pushes horizontal piece over from left*/
-}
+	/*height:.3em;/*width of stick*/
+	/*position:absolute;/*keeps horizontal piece with vertical piece*/
+	/*top:.35em;/*pushes horizontal piece down from top*/
+	/*left:-.35em;/*pushes horizontal piece over from left*/
+/*}
 .minusSign {/*horizontal length*/
-	background:white;
+	/*background:red;
 	width:1em;/*width of stick*/
-	height:.3em;/*vertical length of stick*/
-	position:relative;
+	/*height:.3em;/*vertical length of stick*/
+	/*position:relative;
 	margin-left:.3em;/*pushes both lengths of plus sign from left margin*/
-	top:.6em;
+	/*top:.6em;
+}*/
+.plusSignImg, .minusSignImg{
+	width:1.5em;
+	margin-top:1.3em;
+	position:relative;
 }
-
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
 	float:right;

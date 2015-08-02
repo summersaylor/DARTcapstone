@@ -195,14 +195,14 @@
             <!-- Child Row -->
             <div class="row">
                 <div class="col-md-11">
-                    <div class="signs right" onclick="childPlus()">
-                        <div class="plusSign"></div>
+                    <div class="right" onclick="childPlus()">
+                        <img src="imgs/plusSign.png" class="plusSignImg">
                     </div>
                     <div class="right">
                     	<div id="childNumber">0</div>
                     </div>
-                    <div class="signs right" onclick="childMinus()">
-                        <div class="minusSign"></div>
+                    <div class="right" onclick="childMinus()">
+                        <img src="imgs/minusSign.png" class="minusSignImg">
                     </div>
                     <div class="right">    
                         <h2><sup>$5.00</sup>Child</h2>
@@ -219,14 +219,14 @@
             <!-- High School Row -->
             <div class="row">
                 <div class="col-md-11">
-                	<div class="signs right" onclick="highschoolPlus()">
-                        <div class="plusSign"></div>
+                	<div class="right" onclick="highschoolPlus()">
+                        <img src="imgs/plusSign.png" class="plusSignImg">
                     </div>
                     <div class="right">
                     	<div id="highschoolNumber">0</div>
                     </div>
-                    <div class="signs right" onclick="highschoolMinus()">
-                        <div class="minusSign"></div>
+                    <div class="right" onclick="highschoolMinus()">
+                        <img src="imgs/minusSign.png" class="minusSignImg">
                     </div>
                     <div class="right">    
                         <h2><sup>$5.00</sup>High School</h2>
@@ -243,14 +243,14 @@
 			<!-- College Row -->
             <div class="row">
                 <div class="col-md-11">
-                	<div class="signs right" onclick="collegePlus()">
-                    	<div class="plusSign"></div>
+                	<div class="right" onclick="collegePlus()">
+                    	<img src="imgs/plusSign.png" class="plusSignImg">
                     </div>
                     <div class="right">
                         <div id="collegeNumber">0</div>
                     </div>
-                    <div class="signs right" onclick="collegeMinus()">
-                        <div class="minusSign"></div>
+                    <div class="right" onclick="collegeMinus()">
+                        <img src="imgs/minusSign.png" class="minusSignImg">
                     </div>
                     <div class="right">    
                         <h2><sup>$5.00</sup>College/Trade School</h2>
@@ -267,14 +267,14 @@
             <!-- Adult Row -->
             <div class="row">
                 <div class="col-md-11">
-                	<div class="signs right" onclick="adultPlus()">
-                    	<div class="plusSign"></div>
+                	<div class="right" onclick="adultPlus()">
+                    	<img src="imgs/plusSign.png" class="plusSignImg">
                     </div>
                     <div class="right">
                         <div id="adultNumber">0</div>
                     </div>
-                    <div class="signs right" onclick="adultMinus()">
-                        <div class="minusSign"></div>
+                    <div class="right" onclick="adultMinus()">
+                        <img src="imgs/minusSign.png" class="minusSignImg">
                     </div>
                     <div class="right">    
                         <h2><sup>$5.00</sup>Adult</h2>
@@ -291,14 +291,14 @@
             <!-- Senior/Disabled Row -->
             <div class="row">
                 <div class="col-md-11">
-                	<div class="signs right" onclick="seniorPlus()">
-                    	<div class="plusSign"></div>
+                	<div class="right" onclick="seniorPlus()">
+                        	<img src="imgs/plusSign.png" class="plusSignImg">
                     </div>
                     <div class="right">
                         <div id="seniorNumber">0</div>
                     </div>
-                    <div class="signs right" onclick="seniorMinus()">
-                        <div class="minusSign"></div>
+                    <div class="right" onclick="seniorMinus()">
+                        	<img src="imgs/minusSign.png" class="minusSignImg">
                     </div>
                     <div class="right">    
                         <h2><sup>$5.00</sup>Senior/Disabled</h2>
@@ -319,7 +319,11 @@
                     <p id="changeMessage">Maximum change $20.00</p>
                 </div>
                 
-                <div class="col-md-8">
+                <div class="col-md-6">
+                	<h2 class="right" id="totalText">Total</h2>
+                </div>
+                
+                <div class="col-md-2">
                 	<div class="right">
                         <div id="totalNumber">0</div>
                     </div>
