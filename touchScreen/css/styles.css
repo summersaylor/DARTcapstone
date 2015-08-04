@@ -33,7 +33,10 @@
 	width:7em;
 	float:left;/*starts dart img at left*/
 }
-	
+h1, h2, h3, h4, h5, h6{
+	margin-top:0;
+	margin-bottom:10px;	
+}
 .alertBar {
 	height: 2em;	
 	overflow: hidden;
@@ -92,8 +95,8 @@
 	font-size:1.2em;
 	line-height:1em;
 	position:fixed;/*places the message across all pages*/
-	left:7.8em;
-	bottom:5.5em;
+	left:16em;
+	top:25em;
 	width:14em;
 }
 #changeMessage{
@@ -102,8 +105,8 @@
 	font-size:1.2em;
 	line-height:.2em;	
 	position:fixed;/*places the message across all pages*/
-	left:7.8em;
-	bottom:4.6em;
+	left:16em;
+	top:27.5em;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
@@ -149,43 +152,45 @@ sup{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
-	margin-top:.2em;
 	padding-left:.2em;
 	padding-right:.2em;
 }
 #childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.3em;
-	color:#17407a;/*DART Blue*/
-	margin-top:.2em;
-	
+	color:#17407a;/*DART Blue*/	
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2.6em;
 	color:#17407a;/*DART Blue*/
-	margin-top:.2em;
 	background-color:#eee;
 }
-/*********************************************white side signs*********************************************/
-/*.row{
-	margin-top:0px;	
-}*/
+/*********************************************signs*********************************************/
 div.right h2{/*targets plus and minus buttons text on white side*/
 	color:#17407a;
-	line-height:.6em;	
+	line-height:1.3em;	
 }
 .minusSignImg{
 	width:1.4em;
-	margin-top:1.3em;
 	position:relative;
+	margin-top:.7em;
 }
 .plusSignImg{
 	width:1.5em;
-	margin-top:1.3em;
 	position:relative;
+	margin-top:.6em;
 }
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
 	float:right;
 }
+/*********************************************accordion styles*********************************************/
+.ui-accordion .ui-accordion-content{
+	padding-top:1em;	
+	padding-right:.5em;
+}
+.ui-widget-content{
+	background-color:transparent;
+	border:none;
+}	
