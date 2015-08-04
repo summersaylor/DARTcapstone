@@ -175,41 +175,12 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	color:#17407a;
 	line-height:.6em;	
 }
-/*.signs{/*grey circle behind plus or minus button*/
-	/*background-color:#aaa;
-	border-radius:1em;
-	width:1.5em;
-	height:1.5em;
+.minusSignImg{
+	width:1.4em;
 	margin-top:1.3em;
-	/*margin-left:.3em;
-	margin-right:.3em;*/
-/*}
-/*.plusSign {/*vertical length*/
-	/*background:red;
-	width:.3em;/*width of stick*/
-	/*height:1em;/*vertical length of stick*/
-	/*position:relative;
-	margin-left:.6em;/*pushes both lengths of plus sign form left margin*/
-	/*top:.2em;
+	position:relative;
 }
-.plusSign:before {/*horizontal length*/
-	/*background:red;
-	content:"";
-	width:1em;/*horizontal length of stick*/
-	/*height:.3em;/*width of stick*/
-	/*position:absolute;/*keeps horizontal piece with vertical piece*/
-	/*top:.35em;/*pushes horizontal piece down from top*/
-	/*left:-.35em;/*pushes horizontal piece over from left*/
-/*}
-.minusSign {/*horizontal length*/
-	/*background:red;
-	width:1em;/*width of stick*/
-	/*height:.3em;/*vertical length of stick*/
-	/*position:relative;
-	margin-left:.3em;/*pushes both lengths of plus sign from left margin*/
-	/*top:.6em;
-}*/
-.plusSignImg, .minusSignImg{
+.plusSignImg{
 	width:1.5em;
 	margin-top:1.3em;
 	position:relative;
