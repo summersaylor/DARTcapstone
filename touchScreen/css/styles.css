@@ -20,6 +20,10 @@
 	background-position:75% 70%;/*move background img left and up*/
 	z-index:-1;
 }
+.col-md-12{
+	padding-right:0px;
+	padding-left:30px;	
+}
 .lightSide{/*question text in yellow*/
 	color:#fcd306;/*text against white background is DART yellow*/
 	float:right;
@@ -95,7 +99,7 @@ h1, h2, h3, h4, h5, h6{
 	font-size:1.2em;
 	line-height:1em;
 	position:fixed;/*places the message across all pages*/
-	left:16em;
+	left:12em;
 	top:25em;
 	width:14em;
 }
@@ -105,7 +109,7 @@ h1, h2, h3, h4, h5, h6{
 	font-size:1.2em;
 	line-height:.2em;	
 	position:fixed;/*places the message across all pages*/
-	left:16em;
+	left:12em;
 	top:27.5em;
 }
 sup{
@@ -186,11 +190,18 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	float:right;
 }
 /*********************************************accordion styles*********************************************/
-.ui-accordion .ui-accordion-content{
-	padding-top:1em;	
-	padding-right:.5em;
+.ui-state-default{/*take away border form inactive accordion items*/
+	border:none;	
 }
-.ui-widget-content{
+.ui-state-active{/*give border to active accordion item*/
+	border:1px solid #aaaaaa;	
+}
+.ui-accordion .ui-accordion-content{/*push text down and left within accordion*/
+	padding-top:1em;	
+	padding-right:1em;
+}
+.ui-widget-content{/*take away background color and lines to accordion*/
 	background-color:transparent;
+	background:none;
 	border:none;
 }	
