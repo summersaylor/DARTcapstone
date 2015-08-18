@@ -23,156 +23,171 @@
   		});
 		
 		
-		//Total Counter
-		var totalAmount = 0;
-		var newTotal;
-		var finalTotal = 0;
+		//total counter
+		var childCounter = 0;
+		var highschoolCounter = 0;
+		var collegeCounter = 0;
+		var highschoolCounter = 0;
+		var adultCounter = 0;
+		var seniorCounter = 0;
+		var region;
+		var time;
+		var rates = {
+			"A1A" : 2.50, //local, day, reduced
+			"A1B" : 5.00, //local, day, adult
+			"A2A" : 1.75, //local, midday, reduced
+			"A2B" : 1.75, //local, midday, adult
+			"A3A" : 1.25, //local, 2 hour, reduced
+			"A3B" : 2.50, //local, 2 hour, adult
+			"A4A" : 40.00, //local, monthly, reduced
+			"A4B" : 80.00, //local, monthly, adult
+			"A5A" : 25.00, //local, 7 day, reduced
+			"A5B" : 25.00, //local, 7 day, adult
+			"B1A" : 2.50, //regional, day, reduced
+			"B1B" : 10.00, //regional, day, adult
+			"B2A" : 3.50, //regional, midday, reduced
+			"B2B" : 3.50, //regional, midday, adult
+			"B3A" : 1.25, //regional, 2 hour, reduced
+			"B3B" : 5.00, //regional, 2 hour, adult
+			"B4A" : 40.00, //regional, monthly, reduced
+			"B4B" : 160.00, //regional, monthly, adult
+			"B5A" : 50.00, //regional, 7 day, reduced
+			"B5B" : 50.00, //regional, 7 day, adult
+		};
 		
-		//Child Counter
-		var childCounter = 0;//number of child tickets
-		var childTicketCost = 5;//cost of child ticket from spreadsheet
-		var childAmount = 0;//total of all child tickets * cost of child ticket
-		function childPlus() {
-			if(childCounter >=0)
+		function updateTime(timeString) {
+						
+			if(timeString == "Day")
 			{
-				childCounter = childCounter + 1;
-				childAmount = childCounter * childTicketCost;
-				finalTotal = finalTotal + childTicketCost;
+				time = "1";
 			}
-			//Change number to reflect childCounter
+			else if(timeString == "Midday")
+			{
+				time = "2";
+			}
+			else if(timeString == "2 Hour")
+			{
+				time = "3";
+			}
+			else if(timeString == "Monthly")
+			{
+				time = "4";
+			}
+			else if(timeString == "7 Day")
+			{
+				time = "5";
+			}
+			//update totals
+			updateTotals();
+		}
+		
+		function updateRegion(regionString) {
+			
+			if(regionString == "Local")
+			{
+				region = "A";
+			}
+			else if(regionString == "Regional")
+			{
+				region = "B";
+			}
+			//update totals
+			updateTotals();
+		}
+		
+		function updateCounters(increment, element) {
+			
+			if(element == "child")
+			{	
+				if(childCounter + increment <0)
+				{
+					return;//exit function if counter below 0
+				}
+				childCounter = increment + childCounter;
+			}
+			
+			else if(element == "highschool")
+			{	
+				if(highschoolCounter + increment <0)
+				{
+					return;//exit function if counter below 0
+				}
+				highschoolCounter = increment + highschoolCounter;
+			}
+			
+			else if(element == "college")
+			{	
+				if(collegeCounter + increment <0)
+				{
+					return;//exit function if counter below 0
+				}
+				collegeCounter = increment + collegeCounter;
+			}
+			
+			else if(element == "adult")
+			{	
+				if(adultCounter + increment <0)
+				{
+					return;//exit function if counter below 0
+				}
+				adultCounter = increment + adultCounter;
+			}
+			
+			else if(element == "senior")
+			{	
+				if(seniorCounter + increment <0)
+				{
+					return;//exit function if counter below 0
+				}
+				seniorCounter = increment + seniorCounter;
+			}
+			
+			//update line totals cost
+			updateTotals();									
+		}
+		
+		function updateTotals() {
+			//update display counts
 			document.getElementById("childNumber").innerHTML = String(childCounter);
-			document.getElementById("childCost").innerHTML = String(childAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		function childMinus() {
-			if(childCounter >0)
-			{
-				childCounter = childCounter - 1;
-				childAmount = childCounter * childTicketCost;
-				finalTotal = finalTotal - childTicketCost;
-			}
-			// change childNumber to reflect childCounter 
-			document.getElementById("childNumber").innerHTML = String(childCounter);
-			document.getElementById("childCost").innerHTML = String(childAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		
-		//High School Counter
-		var highschoolCounter = 0;//number of highschool tickets
-		var highschoolTicketCost = 5;//cost of highschool ticket from spreadsheet
-		var highschoolAmount = 0;//total of all highschool tickets * cost of highschool ticket
-		function highschoolPlus() {
-			if(highschoolCounter >=0)
-			{
-				highschoolCounter = highschoolCounter + 1;
-				highschoolAmount = highschoolCounter * highschoolTicketCost;
-				finalTotal = finalTotal + highschoolTicketCost;
-			}
-			//Change number to reflect highschoolCounter
 			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
-			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		function highschoolMinus() {
-			if(highschoolCounter >0)
-			{
-				highschoolCounter = highschoolCounter - 1;
-				highschoolAmount = highschoolCounter * highschoolTicketCost;
-				finalTotal = finalTotal - highschoolTicketCost;
-			}
-			// change highschoolNumber to reflect highschoolCounter 
-			document.getElementById("highschoolNumber").innerHTML = String(highschoolCounter);
-			document.getElementById("highschoolCost").innerHTML = String(highschoolAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		
-		//College Counter
-		var collegeCounter = 0;//number of college tickets
-		var collegeTicketCost = 5;//cost of college ticket from spreadsheet
-		var collegeAmount = 0;//total of all college tickets * cost of college ticket
-		function collegePlus() {
-			if(collegeCounter >=0)
-			{
-				collegeCounter = collegeCounter + 1;
-				collegeAmount = collegeCounter * collegeTicketCost;
-				finalTotal = finalTotal + collegeTicketCost;
-			}
-			//Change number to reflect collegeCounter
 			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
-			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		function collegeMinus() {
-			if(collegeCounter >0)
-			{
-				collegeCounter = collegeCounter - 1;
-				collegeAmount = collegeCounter * collegeTicketCost;
-				finalTotal = finalTotal - collegeTicketCost;
-			}
-			// change collegeNumber to reflect collegeCounter 
-			document.getElementById("collegeNumber").innerHTML = String(collegeCounter);
-			document.getElementById("collegeCost").innerHTML = String(collegeAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		
-		//Adult Counter
-		var adultCounter = 0;//number of adult tickets
-		var adultTicketCost = 5;//cost of adult ticket from spreadsheet
-		var adultAmount = 0;//total of all adult tickets * cost of adult ticket
-		function adultPlus() {
-			if(adultCounter >=0)
-			{
-				adultCounter = adultCounter + 1;
-				adultAmount = adultCounter * adultTicketCost;
-				finalTotal = finalTotal + adultTicketCost;
-			}
-			//Change number to reflect adultCounter
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
-			document.getElementById("adultCost").innerHTML = String(adultAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		function adultMinus() {
-			if(adultCounter >0)
-			{
-				adultCounter = adultCounter - 1;
-				adultAmount = adultCounter * adultTicketCost;
-				finalTotal = finalTotal - adultTicketCost;
-			}
-			// change adultNumber to reflect adultCounter 
-			document.getElementById("adultNumber").innerHTML = String(adultCounter);
-			document.getElementById("adultCost").innerHTML = String(adultAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
+			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
+			
+			//get line new total
+			document.getElementById("childCost").innerHTML = String(getCost(region + time + "A",childCounter));
+			document.getElementById("childSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			
+			document.getElementById("highschoolCost").innerHTML = String(getCost(region + time + "A",highschoolCounter));
+			document.getElementById("highschoolSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			
+			document.getElementById("collegeCost").innerHTML = String(getCost(region + time + "A",collegeCounter));
+			document.getElementById("collegeSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			
+			document.getElementById("adultCost").innerHTML = String(getCost(region + time + "B",adultCounter));
+			document.getElementById("adultSingleTicket").innerHTML = String(getCost(region + time + "B",1));
+			
+			document.getElementById("seniorCost").innerHTML = String(getCost(region + time + "A",seniorCounter));
+			document.getElementById("seniorSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			
+			//generate grand total
+			var grandTot = 0;
+				
+			//build total from counters
+			grandTot = grandTot + getCost(region + time + "A",childCounter);
+			grandTot = grandTot + getCost(region + time + "A",highschoolCounter);
+			grandTot = grandTot + getCost(region + time + "A",collegeCounter);
+			grandTot = grandTot + getCost(region + time + "B",adultCounter);
+			grandTot = grandTot + getCost(region + time + "A",seniorCounter);
+			
+			//update grand total display
+			document.getElementById("totalNumber").innerHTML = String(grandTot);
 		}
 		
-		//Senior/Disabled Counter
-		var seniorCounter = 0;//number of senior tickets
-		var seniorTicketCost = 5;//cost of senior ticket from spreadsheet
-		var seniorAmount = 0;//total of all senior tickets * cost of senior ticket
-		function seniorPlus() {
-			if(seniorCounter >=0)
-			{
-				seniorCounter = seniorCounter + 1;
-				seniorAmount = seniorCounter * seniorTicketCost;
-				finalTotal = finalTotal + seniorTicketCost;
-			}
-			//Change number to reflect seniorCounter
-			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
-			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
+		function getCost(type, quantity)
+		{
+			return rates[type]*quantity;
 		}
-		function seniorMinus() {
-			if(seniorCounter >0)
-			{
-				seniorCounter = seniorCounter - 1;
-				seniorAmount = seniorCounter * seniorTicketCost;
-				finalTotal = finalTotal - seniorTicketCost
-			}
-			// change seniorNumber to reflect seniorCounter 
-			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
-			document.getElementById("seniorCost").innerHTML = String(seniorAmount);
-			document.getElementById("totalNumber").innerHTML = String(finalTotal);
-		}
-		
 		
 	</script>
 </head>
@@ -200,9 +215,9 @@
                         
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="zone right">Regional</div>
+                                    <div class="zone right" onclick="updateRegion('Regional')">Regional</div>
                                     <h1 class="lightSide" id="yellowOr">or</h1>
-                                    <div class="zone right">Local</div>
+                                    <div class="zone right" onclick="updateRegion('Local')">Local</div>
                                 </div>
                             </div><!-- close row -->
                         </div><!-- close zone -->
@@ -221,11 +236,11 @@
                                 </div>
                                 
                                 <div class="col-md-4">
-                                    <div class="tripDuration">Day</div>
-                                    <div class="tripDuration">Midday</div>
-                                    <div class="tripDuration">2 Hour</div>
-                                    <div class="tripDuration">Monthly</div>
-                                    <div class="tripDuration">7 Day</div>
+                                    <div class="tripDuration" onclick="updateTime('Day')">Day</div>
+                                    <div class="tripDuration" onclick="updateTime('Midday')">Midday</div>
+                                    <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
+                                    <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
+                                    <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
                                 </div>
                             </div><!-- close row -->
                         </div><!-- close trip duration-->
@@ -239,17 +254,17 @@
                             <!-- Child Row -->
                             <div class="row">
                                 <div class="col-md-11">
-                                    <div class="right" onclick="childPlus()">
+                                    <div class="right" onclick="updateCounters(1,'child')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
                                     <div class="right">
                                         <div id="childNumber">0</div>
                                     </div>
-                                    <div class="right" onclick="childMinus()">
+                                    <div class="right" onclick="updateCounters(-1,'child')">
                                         <img src="imgs/minusSign.png" class="minusSignImg">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup>$5.00</sup>Child</h2>
+                                        <h2><sup id="childSingleTicket"></sup>Child</h2>
                                     </div>
                                 </div>
                                 
@@ -263,17 +278,17 @@
                             <!-- High School Row -->
                             <div class="row">
                                 <div class="col-md-11">
-                                    <div class="right" onclick="highschoolPlus()">
+                                    <div class="right" onclick="updateCounters(1,'highschool')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
                                     <div class="right">
                                         <div id="highschoolNumber">0</div>
                                     </div>
-                                    <div class="right" onclick="highschoolMinus()">
+                                    <div class="right" onclick="updateCounters(-1,'highschool')">
                                         <img src="imgs/minusSign.png" class="minusSignImg">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup>$5.00</sup>High School</h2>
+                                        <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
                                     </div>
                                 </div>
                                 
@@ -287,17 +302,17 @@
                             <!-- College Row -->
                             <div class="row">
                                 <div class="col-md-11">
-                                    <div class="right" onclick="collegePlus()">
+                                    <div class="right" onclick="updateCounters(1,'college')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
                                     <div class="right">
                                         <div id="collegeNumber">0</div>
                                     </div>
-                                    <div class="right" onclick="collegeMinus()">
+                                    <div class="right" onclick="updateCounters(-1,'college')">
                                         <img src="imgs/minusSign.png" class="minusSignImg">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup>$5.00</sup>College/Trade School</h2>
+                                        <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
                                     </div>
                                 </div>
                                 
@@ -311,17 +326,17 @@
                             <!-- Adult Row -->
                             <div class="row">
                                 <div class="col-md-11">
-                                    <div class="right" onclick="adultPlus()">
+                                    <div class="right" onclick="updateCounters(1,'adult')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
                                     <div class="right">
                                         <div id="adultNumber">0</div>
                                     </div>
-                                    <div class="right" onclick="adultMinus()">
+                                    <div class="right" onclick="updateCounters(-1,'adult')">
                                         <img src="imgs/minusSign.png" class="minusSignImg">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup>$5.00</sup>Adult</h2>
+                                        <h2><sup id="adultSingleTicket"></sup>Adult</h2>
                                     </div>
                                 </div>
                                 
@@ -335,17 +350,17 @@
                             <!-- Senior/Disabled Row -->
                             <div class="row">
                                 <div class="col-md-11">
-                                    <div class="right" onclick="seniorPlus()">
+                                    <div class="right" onclick="updateCounters(1,'senior')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
                                     <div class="right">
                                         <div id="seniorNumber">0</div>
                                     </div>
-                                    <div class="right" onclick="seniorMinus()">
+                                    <div class="right" onclick="updateCounters(-1,'senior')">
                                         <img src="imgs/minusSign.png" class="minusSignImg">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup>$5.00</sup>Senior/Disabled</h2>
+                                        <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
                                     </div>
                                 </div>
                                 
