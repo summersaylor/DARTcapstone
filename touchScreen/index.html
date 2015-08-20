@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DART Touch Screen - 1</title>
-    <meta name="description" content="Page 1 for the Dart Ticket Vending Machine" />
+    <title>DART Touch Screen</title>
+    <meta name="description" content="Dart Ticket Vending Machine" />
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,8 +22,21 @@
     		$( "#accordion" ).accordion();
   		});
 		
+		var accordion = $("#accordion").accordion();
+		function openNextAccordionPanel() {
+			var current = $accordion.accordion("option","active"),
+				maximum = $accordion.find("h3").length,
+				next = current+1 === maximum ? 0 : current+1;
+			// $accordion.accordion("activate",next); // pre jQuery UI 1.10
+			$accordion.accordion("option","active",Regional);
+		}
 		
-		//total counter
+		
+		
+		
+		
+				
+		//counters and rates
 		var childCounter = 0;
 		var highschoolCounter = 0;
 		var collegeCounter = 0;
@@ -55,6 +68,7 @@
 			"B5B" : 50.00, //regional, 7 day, adult
 		};
 		
+		//assign value to trip duration strings
 		function updateTime(timeString) {
 						
 			if(timeString == "Day")
@@ -81,6 +95,7 @@
 			updateTotals();
 		}
 		
+		//assign value to zone strings
 		function updateRegion(regionString) {
 			
 			if(regionString == "Local")
@@ -95,11 +110,12 @@
 			updateTotals();
 		}
 		
+		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
 			
 			if(element == "child")
 			{	
-				if(childCounter + increment <0)
+				if(childCounter + increment <0)//keep counter from going below 0
 				{
 					return;//exit function if counter below 0
 				}
@@ -108,7 +124,7 @@
 			
 			else if(element == "highschool")
 			{	
-				if(highschoolCounter + increment <0)
+				if(highschoolCounter + increment <0)//keep counter from going below 0
 				{
 					return;//exit function if counter below 0
 				}
@@ -117,7 +133,7 @@
 			
 			else if(element == "college")
 			{	
-				if(collegeCounter + increment <0)
+				if(collegeCounter + increment <0)//keep counter from going below 0
 				{
 					return;//exit function if counter below 0
 				}
@@ -126,7 +142,7 @@
 			
 			else if(element == "adult")
 			{	
-				if(adultCounter + increment <0)
+				if(adultCounter + increment <0)//keep counter from going below 0
 				{
 					return;//exit function if counter below 0
 				}
@@ -135,17 +151,18 @@
 			
 			else if(element == "senior")
 			{	
-				if(seniorCounter + increment <0)
+				if(seniorCounter + increment <0)//keep counter from going below 0
 				{
 					return;//exit function if counter below 0
 				}
 				seniorCounter = increment + seniorCounter;
 			}
 			
-			//update line totals cost
+			//update line total costs
 			updateTotals();									
 		}
 		
+		//fnc is called each time +/- btn is clicked or zone or trip duration changes
 		function updateTotals() {
 			//update display counts
 			document.getElementById("childNumber").innerHTML = String(childCounter);
@@ -154,26 +171,35 @@
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
 			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
 			
-			//get line new total
+			//update ticket cost per rider
 			document.getElementById("childCost").innerHTML = String(getCost(region + time + "A",childCounter));
-			document.getElementById("childSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			//update individual ticket cost display
+			document.getElementById("childSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
 			
+			//update ticket cost per rider
 			document.getElementById("highschoolCost").innerHTML = String(getCost(region + time + "A",highschoolCounter));
-			document.getElementById("highschoolSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			//update individual ticket cost display
+			document.getElementById("highschoolSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
 			
+			//update ticket cost per rider
 			document.getElementById("collegeCost").innerHTML = String(getCost(region + time + "A",collegeCounter));
-			document.getElementById("collegeSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			//update individual ticket cost display
+			document.getElementById("collegeSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
 			
+			//update ticket cost per rider
 			document.getElementById("adultCost").innerHTML = String(getCost(region + time + "B",adultCounter));
-			document.getElementById("adultSingleTicket").innerHTML = String(getCost(region + time + "B",1));
+			//update individual ticket cost display
+			document.getElementById("adultSingleTicket").innerHTML = String("$" + (getCost(region + time + "B",1)));
 			
+			//update ticket cost per rider
 			document.getElementById("seniorCost").innerHTML = String(getCost(region + time + "A",seniorCounter));
-			document.getElementById("seniorSingleTicket").innerHTML = String(getCost(region + time + "A",1));
+			//update individual ticket cost display
+			document.getElementById("seniorSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
 			
 			//generate grand total
 			var grandTot = 0;
 				
-			//build total from counters
+			//update grand total with new numbers/data
 			grandTot = grandTot + getCost(region + time + "A",childCounter);
 			grandTot = grandTot + getCost(region + time + "A",highschoolCounter);
 			grandTot = grandTot + getCost(region + time + "A",collegeCounter);
@@ -181,13 +207,19 @@
 			grandTot = grandTot + getCost(region + time + "A",seniorCounter);
 			
 			//update grand total display
-			document.getElementById("totalNumber").innerHTML = String(grandTot);
+			document.getElementById("totalNumber").innerHTML = String("$" + (grandTot));
 		}
 		
+		//type = region + time + A/B
+		//quantity = number of tickets per rider type
 		function getCost(type, quantity)
-		{
-			return rates[type]*quantity;
-		}
+			//if (region !=="A" || "B" && time !== "1" || "2" || "3" || "4" || "5"){
+				//return;
+			//}
+			//else 
+			{
+				return rates[type]*quantity;
+			}
 		
 	</script>
 </head>
@@ -215,7 +247,7 @@
                         
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="zone right" onclick="updateRegion('Regional')">Regional</div>
+                                    <div class="zone right" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
                                     <h1 class="lightSide" id="yellowOr">or</h1>
                                     <div class="zone right" onclick="updateRegion('Local')">Local</div>
                                 </div>
@@ -253,7 +285,7 @@
                             
                             <!-- Child Row -->
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'child')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
@@ -268,7 +300,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="right">
                                         <div id="childCost">0</div>
                                     </div>
@@ -277,7 +309,7 @@
                             
                             <!-- High School Row -->
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'highschool')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
@@ -292,7 +324,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="right">
                                         <div id="highschoolCost">0</div>
                                     </div>
@@ -301,7 +333,7 @@
                 
                             <!-- College Row -->
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'college')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
@@ -316,7 +348,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="right">
                                         <div id="collegeCost">0</div>
                                     </div>
@@ -325,7 +357,7 @@
                             
                             <!-- Adult Row -->
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'adult')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
@@ -340,7 +372,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="right">
                                         <div id="adultCost">0</div>
                                     </div>
@@ -349,7 +381,7 @@
                             
                             <!-- Senior/Disabled Row -->
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'senior')">
                                         <img src="imgs/plusSign.png" class="plusSignImg">
                                     </div>
@@ -364,7 +396,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="right">
                                         <div id="seniorCost">0</div>
                                     </div>
@@ -383,11 +415,11 @@
                         </div><!-- close who's riding -->
                 </div><!-- close 9 point column -->
             </div><!-- close accordion -->
-            	
+
             <!-- Type of Currency Accepted -->
             <div class="row">
             	<div class="col-md-4">
-                	<p id="currencyMessage">This machine only accepts coins, bills, and credit cards.</p>
+                	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
                     <p id="changeMessage">Maximum change $20.00</p>
                 </div>
             </div>
