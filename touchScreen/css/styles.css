@@ -24,6 +24,13 @@
 	padding-right:0px;
 	padding-left:30px;	
 }
+h1, h2, h3, h4, h5, h6{
+	margin-top:0;
+	margin-bottom:10px;	
+}
+h2{
+	font-size:1.8em;
+}
 .lightSide{/*question text in yellow*/
 	color:#fcd306;/*text against white background is DART yellow*/
 	float:right;
@@ -36,10 +43,6 @@
 .dartLogo{
 	width:7em;
 	float:left;/*starts dart img at left*/
-}
-h1, h2, h3, h4, h5, h6{
-	margin-top:0;
-	margin-bottom:10px;	
 }
 .alertBar {
 	height: 2em;	
@@ -98,9 +101,9 @@ h1, h2, h3, h4, h5, h6{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
-	position:fixed;/*places the message across all pages*/
-	left:12em;
-	top:25em;
+	position:relative;/*places the message across all pages*/
+	left:1em;
+	bottom:4em;
 	width:14em;
 }
 #changeMessage{
@@ -108,9 +111,9 @@ h1, h2, h3, h4, h5, h6{
 	font-weight:bold;
 	font-size:1.2em;
 	line-height:.2em;	
-	position:fixed;/*places the message across all pages*/
-	left:12em;
-	top:27.5em;
+	position:relative;/*places the message across all pages*/
+	left:1em;
+	bottom:3.5em;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
@@ -166,7 +169,7 @@ sup{
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.6em;
+	font-size:2.3em;
 	color:#17407a;/*DART Blue*/
 	background-color:#eee;
 }
