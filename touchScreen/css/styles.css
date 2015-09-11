@@ -43,6 +43,19 @@ h2{
 .dartLogo{
 	width:7em;
 	float:left;/*starts dart img at left*/
+	clear:both;
+}
+#date{
+	font-weight: bold;
+	position: absolute;
+	top: 7em;
+	left:1.5em;
+}
+#time{
+	font-weight: bold;
+	position: absolute;
+	top: 8.5em;
+	left:1.5em;
 }
 .alertBar {
 	height: 2em;	
@@ -101,9 +114,9 @@ h2{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
-	position:relative;/*places the message across all pages*/
+	position:relative;
 	left:1em;
-	bottom:4em;
+	bottom:6em;
 	width:14em;
 }
 #changeMessage{
@@ -111,9 +124,9 @@ h2{
 	font-weight:bold;
 	font-size:1.2em;
 	line-height:.2em;	
-	position:relative;/*places the message across all pages*/
+	position:relative;
 	left:1em;
-	bottom:3.5em;
+	bottom:5.5em;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
@@ -124,6 +137,7 @@ sup{
 	color:#17407a;/*DART Blue*/	
 	text-align:right;
 	text-decoration:none;
+	cursor: pointer;
 }
 	.zone :link{
 		color:#17407a;/*DART Blue*/
@@ -140,6 +154,7 @@ sup{
 	color:#17407a;/*DART Blue*/	
 	text-align:right;
 	text-decoration:none;
+	cursor: pointer;
 }
 	.tripDuration :link{
 		color:#17407a;/*DART Blue*/
@@ -182,11 +197,13 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	width:1.4em;
 	position:relative;
 	margin-top:.7em;
+	cursor: pointer;
 }
 .plusSignImg{
 	width:1.5em;
 	position:relative;
 	margin-top:.6em;
+	cursor: pointer;
 }
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
