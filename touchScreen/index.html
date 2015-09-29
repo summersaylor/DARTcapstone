@@ -26,16 +26,9 @@
 	});
 
 		$(function() {
-    		$( "#accordion" ).accordion();
+    		$( "#accordion" ).accordion({collapsible: true});
   		});
 		
-		var accordion = $("#accordion").accordion();
-		function openNextAccordionPanel() {
-			var current = $accordion.accordion("option","active"),
-				maximum = $accordion.find("h3").length,
-				next = current+1 === maximum ? 0 : current+1;
-			$accordion.accordion("option","active",Regional);
-		}
 		
 		//counters and rates
 		var childCounter = 0;
@@ -69,6 +62,22 @@
 			"B5B" : 50.00, //regional, 7 day, adult
 		};
 		
+		//assign value to zone strings
+		function updateRegion(regionString) {
+			
+			if(regionString == "Local")
+				{region = "A";}
+
+			else if(regionString == "Regional")
+				{region = "B";}
+
+			//update totals
+			updateTotals();
+
+			//move to next accordion panel
+			$("#accordion").accordion( "option", "active", 1 );
+		}
+		
 		//assign value to trip duration strings
 		function updateTime(timeString) {
 						
@@ -89,21 +98,11 @@
 
 			//update totals
 			updateTotals();
-		}
-		
-		//assign value to zone strings
-		function updateRegion(regionString) {
-			
-			if(regionString == "Local")
-				{region = "A";}
 
-			else if(regionString == "Regional")
-				{region = "B";}
-
-			//update totals
-			updateTotals();
+			//move to next accordion panel
+			$("#accordion").accordion( "option", "active", 2 );
 		}
-		
+
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
 			
@@ -192,28 +191,32 @@
 			
 			//generate grand total
 			var grandTot = 0;
-				
-			//update grand total with new numbers/data
-			grandTot = grandTot + getCost(region + time + "A",childCounter);
-			grandTot = grandTot + getCost(region + time + "A",highschoolCounter);
-			grandTot = grandTot + getCost(region + time + "A",collegeCounter);
-			grandTot = grandTot + getCost(region + time + "B",adultCounter);
-			grandTot = grandTot + getCost(region + time + "A",seniorCounter);
 			
+			//update grand total with new numbers/data
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",childCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",highschoolCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",collegeCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "B",adultCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",seniorCounter));
+			
+			//convert grandTot to fixedGrandTot showing 3 decimal places
+			fixedGrandTot = grandTot.toFixed(2);
+
 			//update grand total display
-			document.getElementById("totalNumber").innerHTML = String("$" + (grandTot));
+			document.getElementById("totalNumber").innerHTML = String("$" + (fixedGrandTot));
 		}
 		
 		//type = region + time + A/B
 		//quantity = number of tickets per rider type
-		function getCost(type, quantity)
-			//if (region !=="A" || "B" && time !== "1" || "2" || "3" || "4" || "5"){
-				//return;
-			//}
-			//else 
-			{
-				return rates[type]*quantity;
+		function getCost(type, quantity){
+			if (isNaN(rates[type]*quantity)){
+				return "0.00";
 			}
+			else 
+			{
+				return (rates[type]*quantity).toFixed(2);
+			}
+		}
 	</script>
 </head>
 
@@ -398,15 +401,17 @@
                                 </div>
                             </div><!-- end Senior/Disabled Row -->
                             
-                            <div class="col-md-10 riderHeight">
+
+                            <div class="col-md-10 riderHeight totalRow">
                 				<h2 class="right" id="totalText">Total</h2>
                				</div>
                 
-                            <div class="col-md-2 riderHeight">
+                            <div class="col-md-2 riderHeight totalRow">
                                 <div class="right">
                                     <div id="totalNumber">0</div>
                                 </div>
                             </div>
+                            
                         </div><!-- close who's riding -->
                 </div><!-- close 9 point column -->
             </div><!-- close accordion -->
