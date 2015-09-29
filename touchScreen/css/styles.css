@@ -168,6 +168,16 @@ sup{
 	}
 #totalText{
 	color:#17407a;/*DART Blue*/
+	top:.7em;
+	left:12em;
+	position:absolute;
+	background-color:#ebebeb;
+	padding-right:5em;/*make background color spread full width of totalNumber*/
+	padding-left:.2em;/*give some space to text left side*/
+	line-height:1.6em;/*make background color spread full height of totalNumber*/
+}
+.totalRow{
+	background-color:#ebebeb;
 }
 /*********************************************incrementing numbers*********************************************/
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
@@ -184,9 +194,12 @@ sup{
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
+	font-size:2em;
 	color:#17407a;/*DART Blue*/
-	background-color:#eee;
+	position:absolute;
+	right:0;
+	top:.7em;
+	background-color:#ebebeb;
 }
 /*********************************************signs*********************************************/
 div.right h2{/*targets plus and minus buttons text on white side*/
@@ -210,6 +223,10 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 	float:right;
 }
 /*********************************************accordion styles*********************************************/
+/*div#ui-id-2[style], #ui-id-4[style], #ui-id-6[style]{
+	height:370px !important;
+	display:none;
+}*/
 .ui-state-default{/*take away border form inactive accordion items*/
 	border:none;	
 }
