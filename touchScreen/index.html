@@ -23,6 +23,7 @@
 	//date and timer
 	$(document).ready(function(){
 		startTime();
+		checkMidday();
 	});
 
 		$(function() {
@@ -217,6 +218,20 @@
 				return (rates[type]*quantity).toFixed(2);
 			}
 		}
+
+
+
+		function checkMidday(){
+			if (parseInt(Date.today().setTimeToNow().toString("hmm")) >= 930 && parseInt(Date.today().setTimeToNow().toString("hmm"))<= 1430){
+				return;//let midday show if time is between 9:30 AM and 2:30 PM
+			}
+			else{
+				$("#midday").hide();
+			}
+		}
+
+
+
 	</script>
 </head>
 
@@ -267,7 +282,7 @@
                                 
                                 <div class="col-md-4">
                                     <div class="tripDuration" onclick="updateTime('Day')">Day</div>
-                                    <div class="tripDuration" onclick="updateTime('Midday')">Midday</div>
+                                    <div class="tripDuration" id="midday" onclick="updateTime('Midday')">Midday</div>
                                     <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
                                     <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
                                     <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
