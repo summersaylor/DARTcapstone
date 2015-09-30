@@ -12,7 +12,6 @@
 .container:before{
 	position:absolute;
 	background-image:url(../imgs/dartMap.jpg);
-	/*background-size:10.5in 7.25in;make background img larger than viewport (like zoom)*/
 	width: 786px;
     height: 504px;
 	opacity:.1;
@@ -114,9 +113,9 @@ h2{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
-	position:relative;
-	left:1em;
-	bottom:6em;
+	position:absolute;
+	left:2em;
+	bottom:3em;
 	width:14em;
 }
 #changeMessage{
@@ -124,9 +123,9 @@ h2{
 	font-weight:bold;
 	font-size:1.2em;
 	line-height:.2em;	
-	position:relative;
-	left:1em;
-	bottom:5.5em;
+	position:absolute;
+	left:2em;
+	bottom:2em;
 }
 sup{
 	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
