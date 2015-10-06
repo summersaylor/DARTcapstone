@@ -8,16 +8,22 @@
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
  	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
  	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+ 	<!-- date and timer -->
+    <script type="text/javascript" src="build/date.js"></script>
+
 	<!-- my styles -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    
-    <!--<script type="application/javascript">-->
-	<script>
+ 
+	<script>	
+	//date and timer
+	$(document).ready(function(){
+		startTime();
+		checkMidday();
+	});
 		
 		//counters and rates
 		var childCounter = 0;
@@ -51,48 +57,41 @@
 			"B5B" : 50.00, //regional, 7 day, adult
 		};
 		
-		//assign value to trip duration strings
-		function updateTime(timeString) {
-						
-			if(timeString == "Day")
-			{
-				time = "1";
-			}
-			else if(timeString == "Midday")
-			{
-				time = "2";
-			}
-			else if(timeString == "2 Hour")
-			{
-				time = "3";
-			}
-			else if(timeString == "Monthly")
-			{
-				time = "4";
-			}
-			else if(timeString == "7 Day")
-			{
-				time = "5";
-			}
-			//update totals
-			updateTotals();
-		}
-		
 		//assign value to zone strings
 		function updateRegion(regionString) {
 			
 			if(regionString == "Local")
-			{
-				region = "A";
-			}
+				{region = "A";}
 			else if(regionString == "Regional")
-			{
-				region = "B";
-			}
+				{region = "B";}
 			//update totals
 			updateTotals();
+
+			//hide zone, show duration 
+			$("#zone").hide();
+			$("#duration").show();
 		}
 		
+		//assign value to trip duration strings
+		function updateTime(timeString) {
+						
+			if(timeString == "Day")
+				{time = "1";}
+			else if(timeString == "Midday")
+				{time = "2";}
+			else if(timeString == "2 Hour")
+				{time = "3";}
+			else if(timeString == "Monthly")
+				{time = "4";}
+			else if(timeString == "7 Day")
+				{time = "5";}
+			//update totals
+			updateTotals();
+			
+			//hide duration, show riders 
+			$("#duration").hide();
+			$("#riders").show();
+		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
 			
@@ -181,29 +180,39 @@
 			
 			//generate grand total
 			var grandTot = 0;
-				
-			//update grand total with new numbers/data
-			grandTot = grandTot + getCost(region + time + "A",childCounter);
-			grandTot = grandTot + getCost(region + time + "A",highschoolCounter);
-			grandTot = grandTot + getCost(region + time + "A",collegeCounter);
-			grandTot = grandTot + getCost(region + time + "B",adultCounter);
-			grandTot = grandTot + getCost(region + time + "A",seniorCounter);
 			
+			//update grand total with new numbers/data
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",childCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",highschoolCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",collegeCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "B",adultCounter));
+			grandTot = grandTot + parseFloat(getCost(region + time + "A",seniorCounter));
+			
+			//convert grandTot to fixedGrandTot showing 3 decimal places
+			fixedGrandTot = grandTot.toFixed(2);
 			//update grand total display
-			document.getElementById("totalNumber").innerHTML = String("$" + (grandTot));
+			document.getElementById("totalNumber").innerHTML = String("$" + (fixedGrandTot));
 		}
 		
 		//type = region + time + A/B
 		//quantity = number of tickets per rider type
-		function getCost(type, quantity)
-			//if (region !=="A" || "B" && time !== "1" || "2" || "3" || "4" || "5"){
-				//return;
-			//}
-			//else 
-			{
-				return rates[type]*quantity;
+		function getCost(type, quantity){
+			if (isNaN(rates[type]*quantity)){
+				return "0.00";
 			}
-		
+			else 
+			{
+				return (rates[type]*quantity).toFixed(2);
+			}
+		}
+		function checkMidday(){
+			if (parseInt(Date.today().setTimeToNow().toString("hmm")) >= 930 && parseInt(Date.today().setTimeToNow().toString("hmm"))<= 1430){
+				return;//let midday show if time is between 9:30 AM and 2:30 PM
+			}
+			else{
+				$("#midday").hide();
+			}
+		}
 	</script>
 </head>
 
@@ -216,186 +225,210 @@
             <div class="row">
                 <div class="col-md-3">
                 	<img src="imgs/dartLogoWhite.png" class="dartLogo">
+                	<p id="date"></p>
+                	<p id="time"></p>
                 </div>
            
             	<div class="col-md-9"> 
-                    	<div id="zone">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="lightSide">Are you riding</h1>
-                                </div>
-                            </div><!-- close row -->
-                        
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="zone right zoneOption" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
-                                    <h1 class="lightSide" id="yellowOr">or</h1>
-                                    <div class="zone right zoneOption" onclick="updateRegion('Local')">Local</div>
-                                </div>
-                            </div><!-- close row -->
-                        </div><!-- close zone -->
-                    
-                        <div id="duration">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="lightSide">How long will your trip last?</h1>
-                                </div>
-                            </div><!-- close row -->
-                            
-                            <div class="row">
-                                <div class="col-md-8"><!-- used to push content to right side of screen -->
-                                </div>
-                                
-                                <div class="col-md-4">
-                                    <div class="tripDuration durationOption" onclick="updateTime('Day')">Day</div>
-                                    <div class="tripDuration durationOption" onclick="updateTime('Midday')">Midday</div>
-                                    <div class="tripDuration durationOption" onclick="updateTime('2 Hour')">2 Hour</div>
-                                    <div class="tripDuration durationOption" onclick="updateTime('Monthly')">Monthly</div>
-                                    <div class="tripDuration durationOption" onclick="updateTime('7 Day')">7 Day</div>
-                                </div>
-                            </div><!-- close row -->
-
-                        </div><!-- close trip duration-->
-                        
-                        <div id="rider">
+                    <div id="zone">
+                        <div class="row">
                             <div class="col-md-12">
-                                <h1 class="lightSide">Who's riding?</h1>
-                            </div><!-- close row -->
-                            
-                            <!-- Child Row -->
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="right" onclick="updateCounters(1,'child')">
-                                        <img src="imgs/plusSign.png" class="plusSignImg">
-                                    </div>
-                                    <div class="right">
-                                        <div id="childNumber">0</div>
-                                    </div>
-                                    <div class="right" onclick="updateCounters(-1,'child')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
-                                    </div>
-                                    <div class="right">    
-                                        <h2><sup id="childSingleTicket"></sup>Child</h2>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-2">
-                                    <div class="right">
-                                        <div id="childCost">0</div>
-                                    </div>
-                                </div>
-                            </div><!-- end Child Row -->
-                            
-                            <!-- High School Row -->
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="right" onclick="updateCounters(1,'highschool')">
-                                        <img src="imgs/plusSign.png" class="plusSignImg">
-                                    </div>
-                                    <div class="right">
-                                        <div id="highschoolNumber">0</div>
-                                    </div>
-                                    <div class="right" onclick="updateCounters(-1,'highschool')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
-                                    </div>
-                                    <div class="right">    
-                                        <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-2">
-                                    <div class="right">
-                                        <div id="highschoolCost">0</div>
-                                    </div>
-                                </div>
-                            </div><!-- end High School Row -->
-                
-                            <!-- College Row -->
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="right" onclick="updateCounters(1,'college')">
-                                        <img src="imgs/plusSign.png" class="plusSignImg">
-                                    </div>
-                                    <div class="right">
-                                        <div id="collegeNumber">0</div>
-                                    </div>
-                                    <div class="right" onclick="updateCounters(-1,'college')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
-                                    </div>
-                                    <div class="right">    
-                                        <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-2">
-                                    <div class="right">
-                                        <div id="collegeCost">0</div>
-                                    </div>
-                                </div>
-                            </div><!-- end College Row -->
-                            
-                            <!-- Adult Row -->
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="right" onclick="updateCounters(1,'adult')">
-                                        <img src="imgs/plusSign.png" class="plusSignImg">
-                                    </div>
-                                    <div class="right">
-                                        <div id="adultNumber">0</div>
-                                    </div>
-                                    <div class="right" onclick="updateCounters(-1,'adult')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
-                                    </div>
-                                    <div class="right">    
-                                        <h2><sup id="adultSingleTicket"></sup>Adult</h2>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-2">
-                                    <div class="right">
-                                        <div id="adultCost">0</div>
-                                    </div>
-                                </div>
-                            </div><!-- end Adult Row -->
-                            
-                            <!-- Senior/Disabled Row -->
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="right" onclick="updateCounters(1,'senior')">
-                                        <img src="imgs/plusSign.png" class="plusSignImg">
-                                    </div>
 
-                                    <div class="right">
-                                        <div id="seniorNumber">0</div>
-                                    </div>
+                                <h1 class="lightSide">Are you riding</h1>
 
-                                    <div class="right" onclick="updateCounters(-1,'senior')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
-                                    </div>
-
-                                    <div class="right">    
-                                        <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
-                                    </div>
-                                </div>
+                            </div><!-- close column -->
+                        </div><!-- close row -->
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="zone right" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
                                 
-                                <div class="col-md-2">
-                                    <div class="right">
-                                        <div id="seniorCost">0</div>
-                                    </div>
-                                </div>
-                            </div><!-- end Senior/Disabled Row -->
+                                <h1 class="lightSide" id="yellowOr">or</h1>
+                                
+                                <div class="zone right" onclick="updateRegion('Local')">Local</div>
+                            </div><!-- close column -->
+                        </div><!-- close row -->
+                    </div><!-- close zone -->
+                    
+                    
+                    <div id="duration">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="lightSide">How long will your trip last?</h1>
+                            </div><!-- close column -->
+                        </div><!-- close row -->
                             
-                            <div class="col-md-10 riderHeight">
-                				<h2 class="right" id="totalText">Total</h2>
-               				</div>
-                
-                            <div class="col-md-2 riderHeight">
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                                
+                            <div class="col-md-4">
+                                <div class="tripDuration" onclick="updateTime('Day')">Day</div>
+                                <div class="tripDuration" id="midday" onclick="updateTime('Midday')">Midday</div>
+                                <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
+                                <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
+                                <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
+                            </div><!-- close column -->
+                        </div><!-- close row -->
+                    </div><!-- close duration-->
+                        
+                    <div id="riders">
+                    	<div class="row">
+	                        <div class="col-md-12">
+	                            <h1 class="lightSide">Who's riding?</h1>
+	                        </div><!-- close column -->
+                        </div><!-- close row -->
+                            
+                        <!-- Child Row -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="right" onclick="updateCounters(1,'child')">
+                                    <img src="imgs/plusSign.png" class="plusSignImg">
+                                </div>
+
                                 <div class="right">
-                                    <div id="totalNumber">0</div>
+                                    <div id="childNumber">0</div>
                                 </div>
-                            </div>
-                        </div><!-- close who's riding -->
-            	</div><!-- close 9 point column -->
+
+                                <div class="right" onclick="updateCounters(-1,'child')">
+                                    <img src="imgs/minusSign.png" class="minusSignImg">
+                                </div>
+
+                                <div class="right">    
+                                    <h2><sup id="childSingleTicket"></sup>Child</h2>
+                                </div>
+                            </div><!-- close column -->
+                                
+                            <div class="col-md-2">
+                                <div class="right">
+                                    <div id="childCost">0</div>
+                                </div>
+                            </div><!-- close column -->
+                        </div><!-- end Child Row -->
+                            
+                        <!-- High School Row -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="right" onclick="updateCounters(1,'highschool')">
+                                    <img src="imgs/plusSign.png" class="plusSignImg">
+                                </div>
+
+                                <div class="right">
+                                    <div id="highschoolNumber">0</div>
+                                </div>
+
+                                <div class="right" onclick="updateCounters(-1,'highschool')">
+                                    <img src="imgs/minusSign.png" class="minusSignImg">
+                                </div>
+
+                                <div class="right">    
+                                    <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
+                                </div>
+                            </div><!-- close column -->
+                                
+                            <div class="col-md-2">
+                                <div class="right">
+                                    <div id="highschoolCost">0</div>
+                                </div>
+                            </div><!-- close column -->
+                        </div><!-- end High School Row -->
+                
+                        <!-- College Row -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="right" onclick="updateCounters(1,'college')">
+                                    <img src="imgs/plusSign.png" class="plusSignImg">
+                                </div>
+
+                                <div class="right">
+                                    <div id="collegeNumber">0</div>
+                                </div>
+
+                                <div class="right" onclick="updateCounters(-1,'college')">
+                                    <img src="imgs/minusSign.png" class="minusSignImg">
+                                </div>
+
+                                <div class="right">    
+                                    <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
+                                </div>
+                            </div><!-- close column -->
+                                
+                            <div class="col-md-2">
+                                <div class="right">
+                                    <div id="collegeCost">0</div>
+                                </div>
+                            </div><!-- close column -->
+                        </div><!-- end College Row -->
+                            
+                        <!-- Adult Row -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="right" onclick="updateCounters(1,'adult')">
+                                    <img src="imgs/plusSign.png" class="plusSignImg">
+                                </div>
+
+                                <div class="right">
+                                    <div id="adultNumber">0</div>
+                                </div>
+
+                                <div class="right" onclick="updateCounters(-1,'adult')">
+                                    <img src="imgs/minusSign.png" class="minusSignImg">
+                                </div>
+
+                                <div class="right">    
+                                    <h2><sup id="adultSingleTicket"></sup>Adult</h2>
+                                </div>
+                            </div><!-- close column -->
+                                
+                            <div class="col-md-2">
+                                <div class="right">
+                                    <div id="adultCost">0</div>
+                                </div>
+                            </div><!-- close column -->
+                        </div><!-- end Adult Row -->
+                            
+                        <!-- Senior/Disabled Row -->
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="right" onclick="updateCounters(1,'senior')">
+                                    <img src="imgs/plusSign.png" class="plusSignImg">
+                                </div>
+
+                                <div class="right">
+                                    <div id="seniorNumber">0</div>
+                                </div>
+
+                                <div class="right" onclick="updateCounters(-1,'senior')">
+                                    <img src="imgs/minusSign.png" class="minusSignImg">
+                                </div>
+
+                                <div class="right">    
+                                    <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
+                                </div>
+                            </div><!-- close column -->
+                                
+                            <div class="col-md-2">
+                                <div class="right">
+                                    <div id="seniorCost">0</div>
+                                </div>
+                            </div><!-- close column -->
+                        </div><!-- end Senior/Disabled Row -->
+                            
+					</div><!-- close riders div -->
+
+					<!-- Total Row -->
+                    <div class="row">
+	                    <div class="col-md-10 riderHeight totalRow">
+	                		<h2 class="right" id="totalText">Total</h2>
+	               		</div><!-- close column -->
+                
+	                    <div class="col-md-2 riderHeight totalRow">
+	                        <div class="right">
+	                            <div id="totalNumber">0</div>
+	                        </div>
+	                    </div><!-- close column -->
+                    </div><!-- close total row -->
+                </div><!-- close 9 point column -->
+           	</div> <!-- close row -->
 
             <!-- Type of Currency Accepted -->
             <div class="row">
@@ -403,43 +436,28 @@
                 	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
                     <p id="changeMessage">Maximum change $20.00</p>
                 </div>
-            </div>
-            <!-- end Type of Currency Accepted -->
+            </div><!-- end Type of Currency Accepted -->
+            
             
             <!-- Moving Alert Bar -->
             <div class="row">
                 <div class="col-md-12" id="alertBarPosition">
-                        <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
+                        <div class="alertBar">
+                        	<p class="alertBarText">Blue Line Rail Service is currently down.</p>
                         </div>
-                </div>
+                </div><!-- close column -->
             </div><!-- end Moving Alert Bar -->
         
     	</div> <!-- close div background -->  
-    </section><!-- close container ends -->
+    </section><!-- close container -->
 </body>
 
 <script>
-
-	//on load, hide duaration and rider sections
-	$( "#duration" ).hide(); 
-	$( "#rider" ).hide();
-
-	//when zoneOption clicked, hide zone and show duration
-	$( ".zoneOption" ).click(function(){
-		$( "#duration" ).show();
-		$( "#zone" ).hide();
-	});
-
-	//when durationOption clicked, hide duration and show rider
-	$( ".durationOption" ).click(function(){
-		$( "#rider" ).show();
-		$( "#duration" ).hide();
-	});
-
-
-
-
-
+	function startTime() {
+	    document.getElementById("date").innerHTML = Date.today().toString("MMMM dd, yyyy");
+	    document.getElementById("time").innerHTML = Date.today().setTimeToNow().toString("h:mm tt");
+	    var t = setTimeout(function(){startTime()},2000);
+	}
 </script>
 
 </html>
