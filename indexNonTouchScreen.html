@@ -90,7 +90,7 @@
 			
 			//hide duration, show riders 
 			$("#duration").hide();
-			$("#riders").show();
+			$("#riders, .totalRow").show();
 		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
@@ -213,6 +213,7 @@
 				$("#midday").hide();
 			}
 		}
+
 	</script>
 </head>
 
@@ -428,7 +429,7 @@
 	                    </div><!-- close column -->
                     </div><!-- close total row -->
                 </div><!-- close 9 point column -->
-           	</div> <!-- close row -->
+           	</div> <!-- close Logo/all options row -->
 
             <!-- Type of Currency Accepted -->
             <div class="row">
@@ -460,7 +461,8 @@
 	}
 	
 	//hide duration and riders on load
-	$("#duration" "#riders").hide();
+	$("#duration, #riders, .totalRow").hide();
+	
 </script>
 
 </html>
