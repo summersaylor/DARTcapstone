@@ -68,8 +68,8 @@
 			updateTotals();
 
 			//hide zone, show duration 
-			$("#zone").hide();
-			$("#duration").show();
+			$("#zone, #zoneResponse").hide();
+			$("#duration, #durationResponse").show();
 		}
 		
 		//assign value to trip duration strings
@@ -89,8 +89,8 @@
 			updateTotals();
 			
 			//hide duration, show riders 
-			$("#duration").hide();
-			$("#riders, .totalRow").show();
+			$("#duration, #durationResponse").hide();
+			$("#riders, #ridersResponse, .totalRow").show();
 		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
@@ -230,225 +230,189 @@
                 	<p id="time"></p>
                 </div>
            
-            	<div class="col-md-9"> 
-                    <div id="zone">
-                        <div class="row">
+            	<div class="col-md-6"> 
+
+	        		<div class="row">
+	                	<div class="col-md-12">
+		            		<div class="alertBar" id="alertBarPosition">
+		                      	<p class="alertBarText">Blue Line Rail Service is currently down.</p>
+		                    </div>
+		                </div>
+		            </div>
+
+	                <div class="row">
+	                	<div class="col-md-12">
+		                    <div id="zone">
+		                        <h1 class="lightSide">Where are you riding?</h1>
+		                    </div><!-- close zone -->
+		                    
+		                    
+		                    <div id="duration">
+		                        <div class="row">
+		                            <div class="col-md-12">
+		                                <h1 class="lightSide">How long will your trip last?</h1>
+		                            </div><!-- close column -->
+		                        </div><!-- close row -->
+		                    </div><!-- close duration-->
+		                        
+
+		                	<div class="row" id="riders">
+		                        <div class="col-md-12">
+		                            <h1 class="lightSide">Who's riding?</h1>
+		                        </div><!-- close column -->
+		                    </div><!-- close row -->
+		                </div>
+		            </div>
+                </div><!-- close 6 point column -->
+
+
+                <div class="col-md-3">
+
+                	<div class="row" id="zoneResponse">
                             <div class="col-md-12">
 
-                                <h1 class="lightSide">Are you riding</h1>
+                            	<div class="zone right" onclick="updateRegion('Local')">Local</div>
 
-                            </div><!-- close column -->
-                        </div><!-- close row -->
-                        
-                        <div class="row">
-                            <div class="col-md-12">
                                 <div class="zone right" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
                                 
-                                <h1 class="lightSide" id="yellowOr">or</h1>
-                                
-                                <div class="zone right" onclick="updateRegion('Local')">Local</div>
                             </div><!-- close column -->
                         </div><!-- close row -->
-                    </div><!-- close zone -->
-                    
-                    
-                    <div id="duration">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="lightSide">How long will your trip last?</h1>
-                            </div><!-- close column -->
-                        </div><!-- close row -->
-                            
-                        <div class="row">
-                            <div class="col-md-8"></div>
-                                
-                            <div class="col-md-4">
-                                <div class="tripDuration" onclick="updateTime('Day')">Day</div>
-                                <div class="tripDuration" id="midday" onclick="updateTime('Midday')">Midday</div>
-                                <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
-                                <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
-                                <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
-                            </div><!-- close column -->
-                        </div><!-- close row -->
-                    </div><!-- close duration-->
-                        
-                    <div id="riders">
-                    	<div class="row">
-	                        <div class="col-md-12">
-	                            <h1 class="lightSide">Who's riding?</h1>
+                    </div><!-- close zone response -->
+
+
+					<div class="row" id="durationResponse">                                
+                        <div class="col-md-12">
+                            <div class="tripDuration" onclick="updateTime('Day')">Day</div>
+                            <div class="tripDuration" id="midday" onclick="updateTime('Midday')">Midday</div>
+                            <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
+                            <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
+                            <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
+                        </div><!-- close column -->
+                    </div><!-- close row -->
+
+
+                	<div class="row" id="ridersResponse">
+						<!-- Child Row -->
+	                    <div class="row">
+	                        <div class="col-md-10">
+	                            <div class="right" onclick="updateCounters(1,'child')">
+	                            </div>
+
+	                            <div class="right">
+	                                <div id="childNumber">0</div>
+	                            </div>
+
+	                            <div class="right" onclick="updateCounters(-1,'child')">
+	                            </div>
+
+	                            <div class="right">    
+	                                <h2><sup id="childSingleTicket"></sup>Child</h2>
+	                            </div>
 	                        </div><!-- close column -->
-                        </div><!-- close row -->
-                            
-                        <!-- Child Row -->
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="right" onclick="updateCounters(1,'child')">
-                                    <img src="imgs/plusSign.png" class="plusSignImg">
-                                </div>
+	                    </div><!-- end Child Row -->
+	                            
+	                    <!-- High School Row -->
+	                    <div class="row">
+	                        <div class="col-md-10">
+	                            <div class="right" onclick="updateCounters(1,'highschool')">
+	                            </div>
 
-                                <div class="right">
-                                    <div id="childNumber">0</div>
-                                </div>
+	                            <div class="right">
+	                                <div id="highschoolNumber">0</div>
+	                            </div>
 
-                                <div class="right" onclick="updateCounters(-1,'child')">
-                                    <img src="imgs/minusSign.png" class="minusSignImg">
-                                </div>
+	                            <div class="right" onclick="updateCounters(-1,'highschool')">
+	                            </div>
 
-                                <div class="right">    
-                                    <h2><sup id="childSingleTicket"></sup>Child</h2>
-                                </div>
-                            </div><!-- close column -->
-                                
-                            <div class="col-md-2">
-                                <div class="right">
-                                    <div id="childCost">0</div>
-                                </div>
-                            </div><!-- close column -->
-                        </div><!-- end Child Row -->
-                            
-                        <!-- High School Row -->
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="right" onclick="updateCounters(1,'highschool')">
-                                    <img src="imgs/plusSign.png" class="plusSignImg">
-                                </div>
+	                            <div class="right">    
+	                                <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
+	                            </div>
+	                        </div><!-- close column -->
+	                    </div><!-- end High School Row -->
+	            
+	                    <!-- College Row -->
+	                    <div class="row">
+	                        <div class="col-md-10">
+	                            <div class="right" onclick="updateCounters(1,'college')">
+	                            </div>
 
-                                <div class="right">
-                                    <div id="highschoolNumber">0</div>
-                                </div>
+	                            <div class="right">
+	                                <div id="collegeNumber">0</div>
+	                            </div>
 
-                                <div class="right" onclick="updateCounters(-1,'highschool')">
-                                    <img src="imgs/minusSign.png" class="minusSignImg">
-                                </div>
+	                            <div class="right" onclick="updateCounters(-1,'college')">
+	                            </div>
 
-                                <div class="right">    
-                                    <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
-                                </div>
-                            </div><!-- close column -->
-                                
-                            <div class="col-md-2">
-                                <div class="right">
-                                    <div id="highschoolCost">0</div>
-                                </div>
-                            </div><!-- close column -->
-                        </div><!-- end High School Row -->
-                
-                        <!-- College Row -->
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="right" onclick="updateCounters(1,'college')">
-                                    <img src="imgs/plusSign.png" class="plusSignImg">
-                                </div>
+	                            <div class="right">    
+	                                <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
+	                            </div>
+	                        </div><!-- close column -->
+	                    </div><!-- end College Row -->
+	                        
+	                    <!-- Adult Row -->
+	                    <div class="row">
+	                        <div class="col-md-10">
+	                            <div class="right" onclick="updateCounters(1,'adult')">
+	                            </div>
 
-                                <div class="right">
-                                    <div id="collegeNumber">0</div>
-                                </div>
+	                            <div class="right">
+	                                <div id="adultNumber">0</div>
+	                            </div>
 
-                                <div class="right" onclick="updateCounters(-1,'college')">
-                                    <img src="imgs/minusSign.png" class="minusSignImg">
-                                </div>
+	                            <div class="right" onclick="updateCounters(-1,'adult')">
+	                            </div>
 
-                                <div class="right">    
-                                    <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
-                                </div>
-                            </div><!-- close column -->
-                                
-                            <div class="col-md-2">
-                                <div class="right">
-                                    <div id="collegeCost">0</div>
-                                </div>
-                            </div><!-- close column -->
-                        </div><!-- end College Row -->
-                            
-                        <!-- Adult Row -->
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="right" onclick="updateCounters(1,'adult')">
-                                    <img src="imgs/plusSign.png" class="plusSignImg">
-                                </div>
+	                            <div class="right">    
+	                                <h2><sup id="adultSingleTicket"></sup>Adult</h2>
+	                            </div>
+	                        </div><!-- close column -->
+	                    </div><!-- end Adult Row -->
+	                        
+	                    <!-- Senior/Disabled Row -->
+	                    <div class="row">
+	                        <div class="col-md-10">
+	                            <div class="right" onclick="updateCounters(1,'senior')">
+	                            </div>
 
-                                <div class="right">
-                                    <div id="adultNumber">0</div>
-                                </div>
+	                            <div class="right">
+	                                <div id="seniorNumber">0</div>
+	                            </div>
 
-                                <div class="right" onclick="updateCounters(-1,'adult')">
-                                    <img src="imgs/minusSign.png" class="minusSignImg">
-                                </div>
+	                            <div class="right" onclick="updateCounters(-1,'senior')">
+	                            </div>
 
-                                <div class="right">    
-                                    <h2><sup id="adultSingleTicket"></sup>Adult</h2>
-                                </div>
-                            </div><!-- close column -->
-                                
-                            <div class="col-md-2">
-                                <div class="right">
-                                    <div id="adultCost">0</div>
-                                </div>
-                            </div><!-- close column -->
-                        </div><!-- end Adult Row -->
-                            
-                        <!-- Senior/Disabled Row -->
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="right" onclick="updateCounters(1,'senior')">
-                                    <img src="imgs/plusSign.png" class="plusSignImg">
-                                </div>
+	                            <div class="right">    
+	                                <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
+	                            </div>
+	                        </div><!-- close column -->
+	                            
+	                    </div><!-- end Senior/Disabled Row -->
 
-                                <div class="right">
-                                    <div id="seniorNumber">0</div>
-                                </div>
 
-                                <div class="right" onclick="updateCounters(-1,'senior')">
-                                    <img src="imgs/minusSign.png" class="minusSignImg">
-                                </div>
+	                </div><!-- close rider response row -->
+                </div><!-- close 3 point column -->
+           	</div> <!-- close Logo/main row -->            
 
-                                <div class="right">    
-                                    <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
-                                </div>
-                            </div><!-- close column -->
-                                
-                            <div class="col-md-2">
-                                <div class="right">
-                                    <div id="seniorCost">0</div>
-                                </div>
-                            </div><!-- close column -->
-                        </div><!-- end Senior/Disabled Row -->
-                            
-					</div><!-- close riders div -->
-
-					<!-- Total Row -->
-                    <div class="row">
-	                    <div class="col-md-10 riderHeight totalRow">
-	                		<h2 class="right" id="totalText">Total</h2>
-	               		</div><!-- close column -->
-                
-	                    <div class="col-md-2 riderHeight totalRow">
-	                        <div class="right">
-	                            <div id="totalNumber">0</div>
-	                        </div>
-	                    </div><!-- close column -->
-                    </div><!-- close total row -->
-                </div><!-- close 9 point column -->
-           	</div> <!-- close Logo/all options row -->
-
-            <!-- Type of Currency Accepted -->
-            <div class="row">
+        
+			<!-- Currency Accepted & Total Row -->
+            <div class="row totalRow">
             	<div class="col-md-4">
                 	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
                     <p id="changeMessage">Maximum change $20.00</p>
                 </div>
-            </div><!-- end Type of Currency Accepted -->
-            
-            
-            <!-- Moving Alert Bar -->
-            <div class="row">
-                <div class="col-md-12" id="alertBarPosition">
-                        <div class="alertBar">
-                        	<p class="alertBarText">Blue Line Rail Service is currently down.</p>
-                        </div>
-                </div><!-- close column -->
-            </div><!-- end Moving Alert Bar -->
+
+                <div class="col-md-6 riderHeight totalRow">
+            		<h2 class="right" id="totalText">Total</h2>
+           		</div><!-- close column -->
         
+                <div class="col-md-2 riderHeight totalRow">
+                    <div class="right">
+                        <div id="totalNumber">0</div>
+                    </div>
+                </div><!-- close column -->
+            </div><!-- close currency accepted & total row -->
+
+
     	</div> <!-- close div background -->  
     </section><!-- close container -->
 </body>
@@ -461,7 +425,7 @@
 	}
 	
 	//hide duration and riders on load
-	$("#duration, #riders, .totalRow").hide();
+	$("#duration, #durationResponse, #riders, #ridersResponse, .totalRow").hide();
 	
 </script>
 
