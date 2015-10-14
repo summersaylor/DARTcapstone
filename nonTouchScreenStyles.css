@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/*import fonts from Google API*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);/*use for numbers on page 3*/
+
+.container{
+	height:5.25in;
+	width:8.5in;
+	position:relative;
+}
+.container:before{
+	position:absolute;
+	background-image:url(../imgs/dartMap.jpg);
+	width: 786px;
+    height: 504px;
+	opacity:.1;
+	background-repeat: no-repeat;
+	background-position:75% 70%;/*move background img left and up*/
+	z-index:-1;
+}
+.col-md-12{
+	padding-right:15px;
+}
+h2{
+	font-size:1.8em;
+}
+.lightSide{/*question text in yellow*/
+	color:#fcd306;/*text against white background is DART yellow*/
+	text-align:center;
+}
+#yellowOr{/*fix "or" line height on index.html*/
+	margin-top:1px;	
+	padding-left:.3em;
+	padding-right:.3em;
+}
+.dartLogo{
+	width:7em;
+	float:left;/*starts dart img at left*/
+}
+#date{
+	font-weight: bold;
+	position: absolute;
+	top: 7em;
+	left:1.5em;
+}
+#time{
+	font-weight: bold;
+	position: absolute;
+	top: 8.5em;
+	left:1.5em;
+}
+.alertBar {
+	height: 2em;	
+	overflow: hidden;
+	position: relative;
+	background-color:#C00;
+	background-image: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(150,0,0,1) 25px, rgba(150,0,0,1) 40px);
+}
+.alertBarText{
+	color:white;
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1.5em;
+	/* starting position */
+	-moz-transform:translateX(70%);
+	-webkit-transform:translateX(70%);	
+	transform:translateX(70%);
+	/* animate this thing! */	
+	-moz-animation: alertBarText 14s linear infinite;
+	-webkit-animation: alertBarText 14s linear infinite;
+	animation: alertBarText 14s linear infinite;
+}
+#alertBarPosition{
+	top:0;
+	clear:both;
+}
+/* move text on alert bar */
+@-moz-keyframes alertBarText{
+ 0%   { -moz-transform: translateX(100%); }/*where text starts on line (90% over to right on screen)*/
+ 100% { -moz-transform: translateX(-40%); }/*how far to the left the text moves off screen before completing the animation*/
+}
+@-webkit-keyframes alertBarText{
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-40%); }
+}
+@keyframes alertBarText{
+ 0%   { 
+ -moz-transform: translateX(100%); 
+ -webkit-transform: translateX(100%); 
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-40%); 
+ -webkit-transform: translateX(-40%); 
+ transform: translateX(-40%); 
+ }
+}
+.pressed{
+	background-color:rgba(0,0,0,0.2);/*gives background color of black with opacity of 2*/
+	padding-left:.2em;/*give more space for color around text*/
+	padding-right:.2em;/*give more space for color around text*/
+}
+.backButton{
+	width:60%;	
+}
+#currencyMessage{
+	color:#980000;
+	font-size:1.2em;
+	line-height:1em;
+	position:absolute;
+	width:14em;
+}
+#changeMessage{
+	color:#980000;
+	font-weight:bold;
+	font-size:1.2em;
+	line-height:.2em;	
+	position:absolute;
+}
+sup{
+	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
+	padding-right:.2em;
+}
+.zone{
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
+	.zone :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.zone :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.zone :hover{
+		text-decoration:none;
+	}
+.tripDuration{
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
+	.tripDuration :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.tripDuration :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.tripDuration :hover{
+		text-decoration:none;
+	}
+#totalText{
+	color:#17407a;/*DART Blue*/
+	top:.7em;
+	left:12em;
+	position:absolute;
+	background-color:#ebebeb;
+	padding-right:5em;/*make background color spread full width of totalNumber*/
+	padding-left:.2em;/*give some space to text left side*/
+	line-height:1.6em;/*make background color spread full height of totalNumber*/
+}
+.totalRow{
+	left:1em;
+	top:7.5em;
+}
+/*********************************************incrementing numbers*********************************************/
+#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/
+	padding-left:.2em;
+	padding-right:.2em;
+}
+#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+}
+#totalNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2em;
+	color:#17407a;/*DART Blue*/
+	position:absolute;
+	right:0;
+	top:.7em;
+	background-color:#ebebeb;
+}
+/*********************************************signs*********************************************/
+div.right h2{/*targets plus and minus buttons text on white side*/
+	color:#17407a;
+	line-height:1.3em;	
+}
+.minusSignImg{
+	width:1.4em;
+	position:relative;
+	margin-top:.7em;
+	cursor: pointer;
+}
+.plusSignImg{
+	width:1.5em;
+	position:relative;
+	margin-top:.6em;
+	cursor: pointer;
+}
+.right {/*places all plus and minus buttons right*/
+	display:inline-block;
+	float:right;
+}
+/*********************************************accordion styles*********************************************/
+/*div#ui-id-2[style], #ui-id-4[style], #ui-id-6[style]{
+	height:370px !important;
+	display:none;
+}*/
+.ui-state-default{/*take away border form inactive accordion items*/
+	border:none;	
+}
+.ui-state-active{/*give border to active accordion item*/
+	border:1px solid #aaaaaa;	
+}
+.ui-accordion .ui-accordion-content{/*push text down and left within accordion*/
+	padding-top:1em;	
+	padding-right:1em;
+}
+.ui-widget-content{/*take away background color and lines to accordion*/
+	background-color:transparent;
+	background:none;
+	border:none;
+}	
