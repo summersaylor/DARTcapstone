@@ -14,7 +14,7 @@
 	background-image:url(../imgs/dartMap.jpg);
 	width: 786px;
     height: 504px;
-	opacity:.1;
+	opacity:.07;
 	background-repeat: no-repeat;
 	background-position:75% 70%;/*move background img left and up*/
 	z-index:-1;
@@ -28,11 +28,6 @@ h2{
 .lightSide{/*question text in yellow*/
 	color:#fcd306;/*text against white background is DART yellow*/
 	text-align:center;
-}
-#yellowOr{/*fix "or" line height on index.html*/
-	margin-top:1px;	
-	padding-left:.3em;
-	padding-right:.3em;
 }
 .dartLogo{
 	width:7em;
@@ -100,8 +95,10 @@ h2{
 	padding-left:.2em;/*give more space for color around text*/
 	padding-right:.2em;/*give more space for color around text*/
 }
-.backButton{
-	width:60%;	
+#backDuration, #backRiders{
+	width:44%;	
+	position:relative;
+	top:125px;
 }
 #currencyMessage{
 	color:#980000;
@@ -117,11 +114,8 @@ h2{
 	line-height:.2em;	
 	position:absolute;
 }
-sup{
-	font-size:.5em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
-	padding-right:.2em;
-}
 .zone{
+	line-height:1.05in;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/	
 	text-align:right;
@@ -139,6 +133,7 @@ sup{
 		text-decoration:none;
 	}
 .tripDuration{
+	line-height:1.05in;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/	
 	text-align:right;
@@ -169,18 +164,24 @@ sup{
 	left:1em;
 	top:7.5em;
 }
+div.right h2{/*targets plus and minus buttons text on white side*/
+	color:#17407a;
+	font-size:1.6em;
+	margin:0px;
+}
+.right {/*places all plus and minus buttons right*/
+	display:inline-block;
+	float:right;
+}
+.riderRow{
+	line-height:1.05in;
+}
 /*********************************************incrementing numbers*********************************************/
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
+	font-size:2em;
 	color:#17407a;/*DART Blue*/
 	padding-left:.2em;
-	padding-right:.2em;
-}
-#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
-	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
-	color:#17407a;/*DART Blue*/	
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
@@ -191,44 +192,3 @@ sup{
 	top:.7em;
 	background-color:#ebebeb;
 }
-/*********************************************signs*********************************************/
-div.right h2{/*targets plus and minus buttons text on white side*/
-	color:#17407a;
-	line-height:1.3em;	
-}
-.minusSignImg{
-	width:1.4em;
-	position:relative;
-	margin-top:.7em;
-	cursor: pointer;
-}
-.plusSignImg{
-	width:1.5em;
-	position:relative;
-	margin-top:.6em;
-	cursor: pointer;
-}
-.right {/*places all plus and minus buttons right*/
-	display:inline-block;
-	float:right;
-}
-/*********************************************accordion styles*********************************************/
-/*div#ui-id-2[style], #ui-id-4[style], #ui-id-6[style]{
-	height:370px !important;
-	display:none;
-}*/
-.ui-state-default{/*take away border form inactive accordion items*/
-	border:none;	
-}
-.ui-state-active{/*give border to active accordion item*/
-	border:1px solid #aaaaaa;	
-}
-.ui-accordion .ui-accordion-content{/*push text down and left within accordion*/
-	padding-top:1em;	
-	padding-right:1em;
-}
-.ui-widget-content{/*take away background color and lines to accordion*/
-	background-color:transparent;
-	background:none;
-	border:none;
-}	
