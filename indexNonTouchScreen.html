@@ -25,6 +25,7 @@
 		checkMidday();
 	});
 		
+		var addTicket = true;
 		//counters and rates
 		var childCounter = 0;
 		var highschoolCounter = 0;
@@ -57,6 +58,20 @@
 			"B5B" : 50.00, //regional, 7 day, adult
 		};
 		
+		//back button to zone from duration
+		function backToZone(){
+			//hide duration, show zone
+			$("#duration, #durationResponse, #backDuration, #addSubTicket").hide();
+			$("#zone, #zoneResponse").show();
+		}
+
+		//back button to duration from zone
+		function backToDuration(){
+			//hide riders, show duration
+			$("#zone, #zoneResponse, #riders, #ridersResponse, .totalRow, #backRiders, #addSubTicket").hide();
+			$("#duration, #durationResponse, #backDuration").show();
+		}
+
 		//assign value to zone strings
 		function updateRegion(regionString) {
 			
@@ -68,8 +83,8 @@
 			updateTotals();
 
 			//hide zone, show duration 
-			$("#zone, #zoneResponse").hide();
-			$("#duration, #durationResponse").show();
+			$("#zone, #zoneResponse, #addSubTicket").hide();
+			$("#duration, #durationResponse, #backDuration").show();
 		}
 		
 		//assign value to trip duration strings
@@ -89,11 +104,15 @@
 			updateTotals();
 			
 			//hide duration, show riders 
-			$("#duration, #durationResponse").hide();
-			$("#riders, #ridersResponse, .totalRow").show();
+			$("#duration, #durationResponse, #backDuration, #addSubTicket").hide();
+			$("#riders, #ridersResponse, .totalRow, #backRiders, #addSubTicket").show();
 		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
+
+			if(addTicket == false){
+				increment = increment * -1;
+			}
 			
 			if(element == "child")
 			{	
@@ -153,31 +172,7 @@
 			document.getElementById("adultNumber").innerHTML = String(adultCounter);
 			document.getElementById("seniorNumber").innerHTML = String(seniorCounter);
 			
-			//update ticket cost per rider
-			document.getElementById("childCost").innerHTML = String(getCost(region + time + "A",childCounter));
-			//update individual ticket cost display
-			document.getElementById("childSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
-			
-			//update ticket cost per rider
-			document.getElementById("highschoolCost").innerHTML = String(getCost(region + time + "A",highschoolCounter));
-			//update individual ticket cost display
-			document.getElementById("highschoolSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
-			
-			//update ticket cost per rider
-			document.getElementById("collegeCost").innerHTML = String(getCost(region + time + "A",collegeCounter));
-			//update individual ticket cost display
-			document.getElementById("collegeSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
-			
-			//update ticket cost per rider
-			document.getElementById("adultCost").innerHTML = String(getCost(region + time + "B",adultCounter));
-			//update individual ticket cost display
-			document.getElementById("adultSingleTicket").innerHTML = String("$" + (getCost(region + time + "B",1)));
-			
-			//update ticket cost per rider
-			document.getElementById("seniorCost").innerHTML = String(getCost(region + time + "A",seniorCounter));
-			//update individual ticket cost display
-			document.getElementById("seniorSingleTicket").innerHTML = String("$" + (getCost(region + time + "A",1)));
-			
+
 			//generate grand total
 			var grandTot = 0;
 			
@@ -214,6 +209,20 @@
 			}
 		}
 
+		
+
+		//add or subtract tickets
+		function addTicketsToggle(){
+			if(addTicket == true){
+				document.getElementById("addSubTicket").innerHTML = "add tickets";
+				addTicket = false;
+			}
+			else{
+				document.getElementById("addSubTicket").innerHTML = "subtract tickets";
+				addTicket = true;
+			}
+		}
+
 	</script>
 </head>
 
@@ -228,6 +237,9 @@
                 	<img src="imgs/dartLogoWhite.png" class="dartLogo">
                 	<p id="date"></p>
                 	<p id="time"></p>
+                	<img src="imgs/blueArrow.png" id="backDuration" onclick="backToZone()">
+                	<img src="imgs/blueArrow.png" id="backRiders" onclick="backToDuration()">
+                	<p id="addSubTicket" onclick="addTicketsToggle()">subtract tickets</p>
                 </div>
            
             	<div class="col-md-6"> 
@@ -269,16 +281,11 @@
                 <div class="col-md-3">
 
                 	<div class="row" id="zoneResponse">
-                            <div class="col-md-12">
-
-                            	<div class="zone right" onclick="updateRegion('Local')">Local</div>
-
-                                <div class="zone right" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
-                                
-                            </div><!-- close column -->
-                        </div><!-- close row -->
-                    </div><!-- close zone response -->
-
+                        <div class="col-md-12">
+                            <div class="zone right" onclick="updateRegion('Local')">Local</div>
+                            <div class="zone right" onclick="updateRegion('Regional')">Regional</div>
+                        </div><!-- close column -->
+                    </div><!-- close row -->
 
 					<div class="row" id="durationResponse">                                
                         <div class="col-md-12">
@@ -293,101 +300,55 @@
 
                 	<div class="row" id="ridersResponse">
 						<!-- Child Row -->
-	                    <div class="row">
-	                        <div class="col-md-10">
-	                            <div class="right" onclick="updateCounters(1,'child')">
-	                            </div>
-
+	                    <div class="row riderRow">
+	                        <div class="col-md-12">
 	                            <div class="right">
-	                                <div id="childNumber">0</div>
-	                            </div>
-
-	                            <div class="right" onclick="updateCounters(-1,'child')">
-	                            </div>
-
-	                            <div class="right">    
-	                                <h2><sup id="childSingleTicket"></sup>Child</h2>
+	                                <div class="right" id="childNumber">0</div>
+	                                <h2 class="right" onclick="updateCounters(1,'child')">Child</h2>
 	                            </div>
 	                        </div><!-- close column -->
 	                    </div><!-- end Child Row -->
 	                            
 	                    <!-- High School Row -->
-	                    <div class="row">
-	                        <div class="col-md-10">
-	                            <div class="right" onclick="updateCounters(1,'highschool')">
-	                            </div>
-
+	                    <div class="row riderRow">
+	                        <div class="col-md-12">
 	                            <div class="right">
-	                                <div id="highschoolNumber">0</div>
-	                            </div>
-
-	                            <div class="right" onclick="updateCounters(-1,'highschool')">
-	                            </div>
-
-	                            <div class="right">    
-	                                <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
+	                                <div class="right" id="highschoolNumber">0</div>  
+	                                <h2 class="right" onclick="updateCounters(1,'highschool')">High School</h2>
 	                            </div>
 	                        </div><!-- close column -->
 	                    </div><!-- end High School Row -->
 	            
 	                    <!-- College Row -->
-	                    <div class="row">
-	                        <div class="col-md-10">
-	                            <div class="right" onclick="updateCounters(1,'college')">
-	                            </div>
-
+	                    <div class="row riderRow">
+	                        <div class="col-md-12">
 	                            <div class="right">
-	                                <div id="collegeNumber">0</div>
-	                            </div>
-
-	                            <div class="right" onclick="updateCounters(-1,'college')">
-	                            </div>
-
-	                            <div class="right">    
-	                                <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
+	                                <div class="right" id="collegeNumber">0</div>  
+	                                <h2 class="right" onclick="updateCounters(1,'college')">College or Trade School</h2>
 	                            </div>
 	                        </div><!-- close column -->
 	                    </div><!-- end College Row -->
 	                        
 	                    <!-- Adult Row -->
-	                    <div class="row">
-	                        <div class="col-md-10">
-	                            <div class="right" onclick="updateCounters(1,'adult')">
-	                            </div>
-
+	                    <div class="row riderRow">
+	                        <div class="col-md-12">
 	                            <div class="right">
-	                                <div id="adultNumber">0</div>
-	                            </div>
-
-	                            <div class="right" onclick="updateCounters(-1,'adult')">
-	                            </div>
-
-	                            <div class="right">    
-	                                <h2><sup id="adultSingleTicket"></sup>Adult</h2>
+	                                <div class="right" id="adultNumber">0</div>   
+	                                <h2 class="right" onclick="updateCounters(1,'adult')">Adult</h2>
 	                            </div>
 	                        </div><!-- close column -->
 	                    </div><!-- end Adult Row -->
 	                        
 	                    <!-- Senior/Disabled Row -->
-	                    <div class="row">
-	                        <div class="col-md-10">
-	                            <div class="right" onclick="updateCounters(1,'senior')">
-	                            </div>
-
+	                    <div class="row riderRow">
+	                        <div class="col-md-12">
 	                            <div class="right">
-	                                <div id="seniorNumber">0</div>
-	                            </div>
-
-	                            <div class="right" onclick="updateCounters(-1,'senior')">
-	                            </div>
-
-	                            <div class="right">    
-	                                <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
+	                                <div class="right" id="seniorNumber">0</div>  
+	                                <h2 class="right" onclick="updateCounters(1,'senior')">Senior or Disabled</h2>
 	                            </div>
 	                        </div><!-- close column -->
 	                            
 	                    </div><!-- end Senior/Disabled Row -->
-
 
 	                </div><!-- close rider response row -->
                 </div><!-- close 3 point column -->
@@ -425,7 +386,7 @@
 	}
 	
 	//hide duration and riders on load
-	$("#duration, #durationResponse, #riders, #ridersResponse, .totalRow").hide();
+	$("#duration, #durationResponse, #riders, #ridersResponse, .totalRow, #backDuration, #backRiders, #addSubTicket").hide();
 	
 </script>
 
