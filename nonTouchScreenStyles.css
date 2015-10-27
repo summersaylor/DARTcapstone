@@ -22,9 +22,6 @@
 .col-md-12{
 	padding-right:15px;
 }
-h2{
-	font-size:1.8em;
-}
 .lightSide{/*question text in yellow*/
 	color:#fcd306;/*text against white background is DART yellow*/
 	text-align:center;
@@ -49,11 +46,9 @@ h2{
 	height: 2em;	
 	overflow: hidden;
 	position: relative;
-	background-color:#C00;
-	background-image: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(150,0,0,1) 25px, rgba(150,0,0,1) 40px);
 }
 .alertBarText{
-	color:white;
+	color:#CA0000;
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:1.5em;
 	/* starting position */
@@ -104,15 +99,16 @@ h2{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
-	position:absolute;
 	width:14em;
+	top:240px;
+	position:relative;
 }
 #changeMessage{
 	color:#980000;
 	font-weight:bold;
-	font-size:1.2em;
 	line-height:.2em;	
-	position:absolute;
+	top:240px;
+	position:relative;
 }
 .zone{
 	line-height:1.05in;
@@ -150,6 +146,13 @@ h2{
 	.tripDuration :hover{
 		text-decoration:none;
 	}
+ .riderRow{
+	font-size:1.4em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
 #totalText{
 	color:#17407a;/*DART Blue*/
 	top:.7em;
@@ -164,22 +167,14 @@ h2{
 	left:1em;
 	top:7.5em;
 }
-div.right h2{/*targets plus and minus buttons text on white side*/
-	color:#17407a;
-	font-size:1.6em;
-	margin:0px;
-}
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
 	float:right;
 }
-.riderRow{
-	line-height:1.05in;
-}
 /*********************************************incrementing numbers*********************************************/
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2em;
+	font-size:1.4em;
 	color:#17407a;/*DART Blue*/
 	padding-left:.2em;
 }
