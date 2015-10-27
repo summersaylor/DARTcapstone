@@ -210,7 +210,6 @@
 		}
 
 		
-
 		//add or subtract tickets
 		function addTicketsToggle(){
 			if(addTicket == true){
@@ -235,29 +234,26 @@
             <div class="row">
                 <div class="col-md-3">
                 	<img src="imgs/dartLogoWhite.png" class="dartLogo">
+
                 	<p id="date"></p>
                 	<p id="time"></p>
+
                 	<img src="imgs/blueArrow.png" id="backDuration" onclick="backToZone()">
                 	<img src="imgs/blueArrow.png" id="backRiders" onclick="backToDuration()">
+
                 	<p id="addSubTicket" onclick="addTicketsToggle()">subtract tickets</p>
+
+                	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
+                    <p id="changeMessage">Maximum change $20.00</p>
                 </div>
            
             	<div class="col-md-6"> 
-
-	        		<div class="row">
-	                	<div class="col-md-12">
-		            		<div class="alertBar" id="alertBarPosition">
-		                      	<p class="alertBarText">Blue Line Rail Service is currently down.</p>
-		                    </div>
-		                </div>
-		            </div>
 
 	                <div class="row">
 	                	<div class="col-md-12">
 		                    <div id="zone">
 		                        <h1 class="lightSide">Where are you riding?</h1>
 		                    </div><!-- close zone -->
-		                    
 		                    
 		                    <div id="duration">
 		                        <div class="row">
@@ -273,6 +269,25 @@
 		                            <h1 class="lightSide">Who's riding?</h1>
 		                        </div><!-- close column -->
 		                    </div><!-- close row -->
+
+		                    <div class="row">
+			                	<div class="col-md-12">
+				            		<div class="alertBar" id="alertBarPosition">
+				                      	<p class="alertBarText">Blue Line Rail Service is currently down.</p>
+				                    </div>
+				                </div>
+		            		</div>	
+
+		            		<div class="col-md-6 riderHeight totalRow">
+			            		<div class="right" id="totalText">Total</div>
+			           		</div><!-- close column -->
+			        
+			                <div class="col-md-2 riderHeight totalRow">
+			                    <div class="">
+			                        <div id="totalNumber">0</div>
+			                    </div>
+			                </div><!-- close column -->
+
 		                </div>
 		            </div>
                 </div><!-- close 6 point column -->
@@ -300,52 +315,47 @@
 
                 	<div class="row" id="ridersResponse">
 						<!-- Child Row -->
-	                    <div class="row riderRow">
-	                        <div class="col-md-12">
-	                            <div class="right">
-	                                <div class="right" id="childNumber">0</div>
-	                                <h2 class="right" onclick="updateCounters(1,'child')">Child</h2>
-	                            </div>
-	                        </div><!-- close column -->
-	                    </div><!-- end Child Row -->
+	                    <div class="row riderRow right">
+	                    	<div class="col-md-11">
+                                <div class="right" onclick="updateCounters(1,'child')">Child</div>
+	                        </div>
+
+	                        <div class="col-md-1">
+                                <div class="right" id="childNumber">0</div>
+                            </div>
+						</div><!-- close column -->
+                            
+	                    
 	                            
 	                    <!-- High School Row -->
-	                    <div class="row riderRow">
-	                        <div class="col-md-12">
-	                            <div class="right">
-	                                <div class="right" id="highschoolNumber">0</div>  
-	                                <h2 class="right" onclick="updateCounters(1,'highschool')">High School</h2>
-	                            </div>
+	                    <div class="row">
+	                        <div class="col-md-12 riderRow">
+                                <div class="right" id="highschoolNumber">0</div>  
+                                <div class="right" onclick="updateCounters(1,'highschool')">High School</div>
 	                        </div><!-- close column -->
 	                    </div><!-- end High School Row -->
 	            
 	                    <!-- College Row -->
-	                    <div class="row riderRow">
-	                        <div class="col-md-12">
-	                            <div class="right">
-	                                <div class="right" id="collegeNumber">0</div>  
-	                                <h2 class="right" onclick="updateCounters(1,'college')">College or Trade School</h2>
-	                            </div>
+	                    <div class="row">
+	                        <div class="col-md-12 riderRow">
+                                <div class="right" id="collegeNumber">0</div>  
+                                <div class="right" onclick="updateCounters(1,'college')">College or Trade School</div>
 	                        </div><!-- close column -->
 	                    </div><!-- end College Row -->
 	                        
 	                    <!-- Adult Row -->
-	                    <div class="row riderRow">
-	                        <div class="col-md-12">
-	                            <div class="right">
-	                                <div class="right" id="adultNumber">0</div>   
-	                                <h2 class="right" onclick="updateCounters(1,'adult')">Adult</h2>
-	                            </div>
+	                    <div class="row">
+	                        <div class="col-md-12 riderRow">
+                                <div class="right" id="adultNumber">0</div>   
+                                <div class="right" onclick="updateCounters(1,'adult')">Adult</div>
 	                        </div><!-- close column -->
 	                    </div><!-- end Adult Row -->
 	                        
 	                    <!-- Senior/Disabled Row -->
-	                    <div class="row riderRow">
-	                        <div class="col-md-12">
-	                            <div class="right">
-	                                <div class="right" id="seniorNumber">0</div>  
-	                                <h2 class="right" onclick="updateCounters(1,'senior')">Senior or Disabled</h2>
-	                            </div>
+	                    <div class="row">
+	                        <div class="col-md-12 riderRow">
+                                <div class="right" id="seniorNumber">0</div>  
+                                <div class="right" onclick="updateCounters(1,'senior')">Senior or Disabled</div>
 	                        </div><!-- close column -->
 	                            
 	                    </div><!-- end Senior/Disabled Row -->
@@ -353,26 +363,6 @@
 	                </div><!-- close rider response row -->
                 </div><!-- close 3 point column -->
            	</div> <!-- close Logo/main row -->            
-
-        
-			<!-- Currency Accepted & Total Row -->
-            <div class="row totalRow">
-            	<div class="col-md-4">
-                	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
-                    <p id="changeMessage">Maximum change $20.00</p>
-                </div>
-
-                <div class="col-md-6 riderHeight totalRow">
-            		<h2 class="right" id="totalText">Total</h2>
-           		</div><!-- close column -->
-        
-                <div class="col-md-2 riderHeight totalRow">
-                    <div class="right">
-                        <div id="totalNumber">0</div>
-                    </div>
-                </div><!-- close column -->
-            </div><!-- close currency accepted & total row -->
-
 
     	</div> <!-- close div background -->  
     </section><!-- close container -->
