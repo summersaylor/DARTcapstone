@@ -90,25 +90,54 @@
 	padding-left:.2em;/*give more space for color around text*/
 	padding-right:.2em;/*give more space for color around text*/
 }
-#backDuration, #backRiders{
-	width:44%;	
-	position:relative;
-	top:125px;
-}
 #currencyMessage{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
 	width:14em;
-	top:240px;
-	position:relative;
+	top:440px;
+	left:inherit;
+	position:absolute;
+	clear:both;
 }
 #changeMessage{
 	color:#980000;
 	font-weight:bold;
 	line-height:.2em;	
+	top:480px;
+	left:inherit;
+	position:absolute;
+}
+#addSubTicket{
+	font-size:1.1em;
+	text-align:center;
+	padding-top:.15em;
+	background-color:white;
+}
+#addSubTicketBox{
+	border-radius:1px;
+	position:absolute;
+	top:200px;
+	left:inherit;
+	height:1.8em;
+	width:9em;
+	box-shadow:0px 1px 1px 1px #9A9A9A;
+}
+#backDuration, #backRiders{
+	color:white;
+	font-size:1.1em;
+	text-align:center;
+	padding-top:.15em;
+}
+#backRidersButton, #backDurationButton{
+	background-color:#17407a;
+	border-radius:1px;
+	position:absolute;
 	top:240px;
-	position:relative;
+	left:inherit;
+	height:1.8em;
+	width:9em;
+	box-shadow:0px 1px 1px 1px #9A9A9A;
 }
 .zone{
 	line-height:1.05in;
@@ -155,17 +184,14 @@
 }
 #totalText{
 	color:#17407a;/*DART Blue*/
-	top:.7em;
-	left:12em;
+	top:0em;
+	left:6em;
 	position:absolute;
 	background-color:#ebebeb;
-	padding-right:5em;/*make background color spread full width of totalNumber*/
-	padding-left:.2em;/*give some space to text left side*/
-	line-height:1.6em;/*make background color spread full height of totalNumber*/
 }
 .totalRow{
-	left:1em;
-	top:7.5em;
+	left:0em;
+	top:24em;
 }
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
@@ -182,8 +208,5 @@
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2em;
 	color:#17407a;/*DART Blue*/
-	position:absolute;
-	right:0;
-	top:.7em;
 	background-color:#ebebeb;
 }
