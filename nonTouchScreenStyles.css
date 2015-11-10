@@ -122,6 +122,7 @@
 	height:1.8em;
 	width:9em;
 	box-shadow:0px 1px 1px 1px #9A9A9A;
+	cursor: pointer;
 }
 #backDuration, #backRiders{
 	color:white;
@@ -138,6 +139,7 @@
 	height:1.8em;
 	width:9em;
 	box-shadow:0px 1px 1px 1px #9A9A9A;
+	cursor: pointer;
 }
 .zone{
 	line-height:1.05in;
@@ -176,22 +178,23 @@
 		text-decoration:none;
 	}
  .riderRow{
-	font-size:1.4em;
+	font-size:1.8em;
 	color:#17407a;/*DART Blue*/	
 	text-align:right;
 	text-decoration:none;
 	cursor: pointer;
+	margin-bottom:.5in;
 }
 #totalText{
 	color:#17407a;/*DART Blue*/
 	top:0em;
-	left:6em;
+	left:4.5em;
 	position:absolute;
-	background-color:#ebebeb;
+	font-size:2em;
 }
 .totalRow{
 	left:0em;
-	top:24em;
+	top:26em;
 }
 .right {/*places all plus and minus buttons right*/
 	display:inline-block;
@@ -204,9 +207,14 @@
 	color:#17407a;/*DART Blue*/
 	padding-left:.2em;
 }
+#childNumber, #highschoolNumber{
+	margin-top:-.05in;
+}
+#collegeNumber, #seniorNumber, #adultNumber{
+	margin-top:.1in;
+}
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2em;
 	color:#17407a;/*DART Blue*/
-	background-color:#ebebeb;
 }
