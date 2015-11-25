@@ -1,8 +1,8 @@
 @charset "UTF-8";
-/*styles for touch screen*/
-/*import fonts from Google API use for numbers on page 3*/
-/*@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
-@import url(http://fonts.googleapis.com/css?family=Roboto);*/
+/*styles for button screen*/
+/*import fonts from Google API*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);/*use for numbers on page 3*/
 
 .container{
 	height:5.25in;
@@ -15,76 +15,21 @@
 	background-image:url(../imgs/dartMap.jpg);
 	width: 786px;
     height: 504px;
-	opacity:.06;
+	opacity:.07;
 	background-repeat: no-repeat;
 	background-position:75% 70%;/*move background img left and up*/
 	z-index:-1;
 }
-h1, h2, h3, h4, h5, h6{
-	margin-top:0;
-	margin-bottom:10px;	
+.col-md-12{
+	padding-right:15px;
 }
-h2{
-	font-size:1.8em;
-}
-ul.tab-links{
-	-webkit-padding-start: 0px;
-}
-.tabs {
-    width:100%;
-    display:inline-block;
-}
-    .tab-links:after {
-        display:block;
-        clear:both;
-        content:'';
-    }
-    .tab-links li {
-        margin-left:10px;
-        float:left;
-        list-style:none;
-    }
-        .tab-links a {
-            padding:9px 15px;
-            display:inline-block;
-            border-bottom:3px solid #17407A;
-            border-radius:3px 3px 0px 0px;
-            background:#EAEAEA;
-            font-size:16px;
-            font-weight:300;
-            color:#333333;
-            transition:all linear 0.15s;
-        }
-        .tab-links a:hover {
-            background-color:rgba(0, 60, 124, 0.23);
-            text-decoration:none;
-        }
-    li.active a, li.active a:hover {
-        background-color: rgba(0,0,0,.01);
-    }
-    .tab-content {
-        padding:15px;
-        border-radius:3px;
-    }
- 
-        .tab {
-            display:none;
-        }
- 
-        .tab.active {
-            display:block;
-        }
-#tab1Value, #tab2Value{
-	text-align:center;	
-}
-#fillerWord{
-	padding-right:20px;
-	display:inline;
+.lightSide{/*question text in yellow*/
+	color:#fcd306;/*text against white background is DART yellow*/
+	text-align:center;
 }
 .dartLogo{
 	width:7em;
 	float:left;/*starts dart img at left*/
-	clear:both;
 }
 #date{
 	font-weight: bold;
@@ -102,10 +47,9 @@ ul.tab-links{
 	height: 2em;	
 	overflow: hidden;
 	position: relative;
-	margin-left:200px;
 }
 .alertBarText{
-	color:#333;
+	color:#CA0000;
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:1.5em;
 	/* starting position */
@@ -118,8 +62,8 @@ ul.tab-links{
 	animation: alertBarText 14s linear infinite;
 }
 #alertBarPosition{
-	bottom:1em;
-	position:absolute;/*keeps alert bar at bottom of page*/
+	top:0;
+	clear:both;
 }
 /* move text on alert bar */
 @-moz-keyframes alertBarText{
@@ -147,64 +91,124 @@ ul.tab-links{
 	padding-left:.2em;/*give more space for color around text*/
 	padding-right:.2em;/*give more space for color around text*/
 }
-.backButton{
-	width:60%;	
-}
-#currency{
-	position:absolute;
-	left:2em;
-	bottom:-1em;
-	width:180px;
-}
 #currencyMessage{
 	color:#980000;
 	font-size:1.2em;
 	line-height:1em;
+	width:14em;
+	top: 390px;
+    left: 95px;
+	position:absolute;
+	clear:both;
+	text-align:center;
 }
 #changeMessage{
 	color:#980000;
 	font-weight:bold;
-	font-size:1.2em;
+	line-height:.2em;	
+	top:435px;
+	left:125px;
+	position:absolute;
 }
-sup{
-	font-size:.6em;	/*change size of supserscript font to be smaller than header tags it is wrapped in*/
-	padding-left:.5em;
-	top:-.3em;
+#addSubTicket{
+	color: #17407A;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    padding-top: .15em;
 }
-.optionButton{
+#addSubTicketBox{
+	background-color: #FFFFFF;
+	border-radius: 2px;
+    border: 2px solid #17407A;
+    position: absolute;
+    top: 200px;
+    left: inherit;
+    height: 2.6em;
+    width: 9em;
+    cursor: pointer;
+}
+#backDuration, #backRiders{
+	color: #17407A;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    padding-top: .15em;
+}
+#backRidersButton, #backDurationButton{
+	background-color: #FFFFFF;
+    border: 2px solid #17407A;
+    border-radius: 2px;
+    position: absolute;
+    top: 310px;
+    left: inherit;
+    height: 2.6em;
+    width: 9em;
+    cursor: pointer;
+}
+.zone{
+	line-height:1.05in;
 	font-size:2.3em;
 	color:#17407a;/*DART Blue*/	
+	text-align:right;
 	text-decoration:none;
 	cursor: pointer;
-	display:inline-block;
-	padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: 2px solid #17407a;
-    border-radius: 5px;
-    margin-top:10px;
-	margin-right:20px;
-	background-color:white;
 }
-	.optionButton :link{
+	.zone :link{
 		color:#17407a;/*DART Blue*/
 		text-decoration:none;
 	}
-	.optionButton :visited{
+	.zone :visited{
 		color:#17407a;/*DART Blue*/
 	}
-	.optionButton :hover{
+	.zone :hover{
 		text-decoration:none;
 	}
-	
-.opacityZero{
-	opacity:0;
+.tripDuration{
+	line-height:1.05in;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
+	.tripDuration :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.tripDuration :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.tripDuration :hover{
+		text-decoration:none;
+	}
+ .riderRow{
+	font-size:1.8em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+	margin-bottom:.5in;
+}
+#totalText{
+	color:#17407a;/*DART Blue*/
+	top:0em;
+	left:4.5em;
+	position:absolute;
+	font-size:2em;
+}
+.totalRow{
+	left:0em;
+	top:26em;
+}
+.right {/*places all plus and minus buttons right*/
+	display:inline-block;
+	float:right;
 }
 /*button is greyed out until riders are 1+*/
 h2#submitButton{
-	margin-left: 6em;
-    margin-top: .8em;
+	margin-top: -1em;
+    margin-left: -7em;
     color: #BFBFBF;
     border: 2px solid #BFBFBF;
     border-radius: 5px;
@@ -219,55 +223,26 @@ h2#submitButton{
 		border: 2px solid #17407A !important;
 		cursor:pointer;
 	}
-#totalText{
-	color:#17407a;/*DART Blue*/
-	top:1em;
-	right:1.2em;
-	position:absolute;
-}
 /*********************************************incrementing numbers*********************************************/
+#adultName{
+	padding-top:.7em;	
+}
 #childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
+	font-size:1.4em;
 	color:#17407a;/*DART Blue*/
 	padding-left:.2em;
-	padding-right:.2em;
 }
-#childCost, #highschoolCost, #collegeCost, #adultCost, #seniorCost{
-	font-family:Roboto, Verdana, Geneva, sans-serif;
-	font-size:2.3em;
-	color:#17407a;/*DART Blue*/	
+#childNumber, #highschoolNumber{
+	margin-top:-.05in;
+}
+#collegeNumber, #seniorNumber, #adultNumber{
+	margin-top:.1in;
 }
 #totalNumber{
 	font-family:Roboto, Verdana, Geneva, sans-serif;
 	font-size:2em;
 	color:#17407a;/*DART Blue*/
-	position:absolute;
-	right:0;
-	top:.7em;
-}
-/*********************************************signs*********************************************/
-div.right h2{/*targets plus and minus buttons text on white side*/
-	color:#17407a;
-	line-height:1.3em;	
-	margin-top:4px;
-}
-.minusSignImg{
-	width:1.4em;
-	position:relative;
-	margin-top:.8em;
-	margin-right:1em;
-	cursor: pointer;
-}
-.plusSignImg{
-	width:1.3em;
-	position:relative;
-	margin-top:.85em;
-	cursor: pointer;
-}
-.right {/*places all plus and minus buttons right*/
-	display:inline-block;
-	float:left;
 }
 /*********************************************checkout Page*********************************************/
 .tickets{
@@ -307,13 +282,15 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 }
 #firstTicket{
 	margin-top: -18em;
+    margin-left: 8em;
 	-ms-transform: rotate(0deg); /* IE 9 */
     -webkit-transform: rotate(0deg); /* Safari */
     transform: rotate(0deg);
 	box-shadow: -10px 10px 15px rgba(95, 95, 95, 0.27);
 }
 #secondTicket{
-	margin-left: 20em;
+	margin-top: 10em;
+    margin-left: 2em;
 	-ms-transform: rotate(-15deg); /* IE 9 */
     -webkit-transform: rotate(-15deg); /* Safari */
     transform: rotate(-15deg);
@@ -321,6 +298,9 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 .thanksMessage{
 	text-align: center;
 	background-color: #eee;
+}
+#checkoutMessageBar{
+	margin-top:6em;	
 }
 .checkoutMessage{
 	font-size:1.6em;
@@ -342,5 +322,5 @@ div.right h2{/*targets plus and minus buttons text on white side*/
 #checkoutBalanceMessage{
 	font-size: 1.4em;
     font-weight: 300;
-    padding-top: 8em;	
+    padding-top: 6em;	
 }

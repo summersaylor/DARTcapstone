@@ -23,11 +23,9 @@
 	$(document).ready(function(){
 		startTime();
 		checkMidday();
+		opacityChange();
+		$("#checkoutPage").hide();
 	});
-		$(function() {
-    		$( "#accordion" ).accordion({collapsible: true});
-  		});
-		
 		
 		//counters and rates
 		var childCounter = 0;
@@ -68,10 +66,17 @@
 				{region = "A";}
 			else if(regionString == "Regional")
 				{region = "B";}
+				
 			//update totals
 			updateTotals();
-			//move to next accordion panel
-			$("#accordion").accordion( "option", "active", 1 );
+			opacityChange();
+			
+			//update tab value
+			document.getElementById("tab1Value").innerHTML = String(regionString);
+			
+			//update checkout page tickets
+			document.getElementById("firstTicketZone").innerHTML = String(regionString);
+			document.getElementById("secondTicketZone").innerHTML = String(regionString);
 		}
 		
 		//assign value to trip duration strings
@@ -81,16 +86,22 @@
 				{time = "1";}
 			else if(timeString == "Midday")
 				{time = "2";}
-			else if(timeString == "2 Hour")
+			else if(timeString == "2 Hours")
 				{time = "3";}
-			else if(timeString == "Monthly")
+			else if(timeString == "1 Month")
 				{time = "4";}
 			else if(timeString == "7 Day")
 				{time = "5";}
 			//update totals
 			updateTotals();
-			//move to next accordion panel
-			$("#accordion").accordion( "option", "active", 2 );
+			opacityChange();
+	
+			//update tab value
+			document.getElementById("tab2Value").innerHTML = String(timeString);
+			
+			//update checkout page tickets
+			document.getElementById("firstTicketDuration").innerHTML = String(timeString);
+			document.getElementById("secondTicketDuration").innerHTML = String(timeString);
 		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
@@ -141,7 +152,8 @@
 			}
 			
 			//update line total costs
-			updateTotals();									
+			updateTotals();	
+			opacityChange();								
 		}
 		
 		//fnc is called each time +/- btn is clicked or zone or trip duration changes
@@ -192,19 +204,31 @@
 			fixedGrandTot = grandTot.toFixed(2);
 			//update grand total display
 			document.getElementById("totalNumber").innerHTML = String("$" + (fixedGrandTot));
+			//update total on checkoutPage
+			document.getElementById("checkoutTotal").innerHTML = String("$" + (fixedGrandTot));
+			
+			//enable submit button if fixedGrandTot > 0
+			if(fixedGrandTot > 0){
+				$("#submitButton").addClass("button");
+			}
+			else if(fixedGrandTot == 0){
+				$("#submitButton").removeClass("button");
+			}
 		}
 		
 		//type = region + time + A/B
 		//quantity = number of tickets per rider type
 		function getCost(type, quantity){
 			if (isNaN(rates[type]*quantity)){
-				return "0.00";
+				return "0";
 			}
 			else 
 			{
 				return (rates[type]*quantity).toFixed(2);
 			}
 		}
+		
+		//check time of day, show/hide midday option
 		function checkMidday(){
 			if (parseInt(Date.today().setTimeToNow().toString("hmm")) >= 930 && parseInt(Date.today().setTimeToNow().toString("hmm"))<= 1430){
 				return;//let midday show if time is between 9:30 AM and 2:30 PM
@@ -219,65 +243,44 @@
 <body>
 <!-- container starts -->
     <section class="container">
-    	<div id="background">
+
+        <!-- Logo -->
+        <div class="row">
+            <div class="col-md-3">
+            	<img src="imgs/dartLogoWhite.png" class="dartLogo">
+            	<p id="date"></p>
+            	<p id="time"></p>
+            </div>
        
-            <!-- Logo -->
-            <div class="row">
-                <div class="col-md-3">
-                	<img src="imgs/dartLogoWhite.png" class="dartLogo">
-                	<p id="date"></p>
-                	<p id="time"></p>
-                </div>
-           
-            	<div class="col-md-9"> 
-                    <div id="accordion">
-                        <h3>Zone</h3>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="lightSide">Are you riding</h1>
-                                </div>
-                            </div><!-- close row -->
-                        
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="zone right" onclick="updateRegion('Regional')" onclick="openNextAccordionPanel()">Regional</div>
-                                    <h1 class="lightSide" id="yellowOr">or</h1>
-                                    <div class="zone right" onclick="updateRegion('Local')">Local</div>
-                                </div>
-                            </div><!-- close row -->
-                        </div><!-- close zone -->
-                    
-                    
-                        <h3>Trip Duration</h3>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="lightSide">How long will your trip last?</h1>
-                                </div>
-                            </div><!-- close row -->
-                            
-                            <div class="row">
-                                <div class="col-md-8">
-                                </div>
-                                
-                                <div class="col-md-4">
-                                    <div class="tripDuration" onclick="updateTime('Day')">Day</div>
-                                    <div class="tripDuration" id="midday" onclick="updateTime('Midday')">Midday</div>
-                                    <div class="tripDuration" onclick="updateTime('2 Hour')">2 Hour</div>
-                                    <div class="tripDuration" onclick="updateTime('Monthly')">Monthly</div>
-                                    <div class="tripDuration" onclick="updateTime('7 Day')">7 Day</div>
-                                </div>
-                            </div><!-- close row -->
-                        </div><!-- close trip duration-->
-                        
-                        <h3>Who's riding?</h3>
-                        <div>
-                            <div class="col-md-12">
-                                <h1 class="lightSide">Who's riding?</h1>
-                            </div><!-- close row -->
-                            
-                            <!-- Child Row -->
+        <div class="col-md-9"> 
+            <div class="tabs">
+			    <ul class="tab-links">
+			        <li class="active" id="tab1tab"><a href="#tab1">Zone</a><p id="tab1Value"></p></li>
+			        <li id="tab2tab"><a href="#tab2">Duration</a><p id="tab2Value"></p></li>
+			        <li id="tab3tab"><a href="#tab3">Riders</a><p id="tab3Value"></p></li>
+			    </ul>
+			 
+			    <div class="tab-content">
+			        <div id="tab1" class="tab active">
+			            <h1>Are your riding</h1>
+			            	<div class="optionButton" onclick="updateRegion('Local')">Local</div>
+			            	<h1 id="fillerWord">or</h1>
+			            	<div class="optionButton" onclick="updateRegion('Regional')">Regional</div>
+			        </div>
+			 
+			        <div id="tab2" class="tab">
+			            <h1>How long will your trip last?</h1>
+			            	<div class="optionButton" onclick="updateTime('Day')">Day</div>
+                            <div class="optionButton" onclick="updateTime('2 Hours')">2 Hours</div>
+                            <div class="optionButton" id="midday" onclick="updateTime('Midday')">Midday</div>
+                            <div class="optionButton" onclick="updateTime('7 Day')">7 Day</div>
+                            <div class="optionButton" onclick="updateTime('1 Month')">1 Month</div>
+			        </div>
+			 
+			        <div id="tab3" class="tab">
+			            <h1>Who's riding?</h1>
+
+				            <!-- Child Row -->
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="right" onclick="updateCounters(1,'child')">
@@ -287,10 +290,10 @@
                                         <div id="childNumber">0</div>
                                     </div>
                                     <div class="right" onclick="updateCounters(-1,'child')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
+                                        <img src="imgs/minusSign.png" class="minusSignImg" id="childMinus">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup id="childSingleTicket"></sup>Child</h2>
+                                        <h2>Child<sup id="childSingleTicket"></sup></h2>
                                     </div>
                                 </div>
                                 
@@ -311,10 +314,10 @@
                                         <div id="highschoolNumber">0</div>
                                     </div>
                                     <div class="right" onclick="updateCounters(-1,'highschool')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
+                                        <img src="imgs/minusSign.png" class="minusSignImg" id="highschoolMinus">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup id="highschoolSingleTicket"></sup>High School</h2>
+                                        <h2>High School<sup id="highschoolSingleTicket"></sup></h2>
                                     </div>
                                 </div>
                                 
@@ -335,10 +338,10 @@
                                         <div id="collegeNumber">0</div>
                                     </div>
                                     <div class="right" onclick="updateCounters(-1,'college')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
+                                        <img src="imgs/minusSign.png" class="minusSignImg" id="collegeMinus">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup id="collegeSingleTicket"></sup>College/Trade School</h2>
+                                        <h2>College or Trade School<sup id="collegeSingleTicket"></sup></h2>
                                     </div>
                                 </div>
                                 
@@ -359,10 +362,10 @@
                                         <div id="adultNumber">0</div>
                                     </div>
                                     <div class="right" onclick="updateCounters(-1,'adult')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
+                                        <img src="imgs/minusSign.png" class="minusSignImg" id="adultMinus">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup id="adultSingleTicket"></sup>Adult</h2>
+                                        <h2>Adult<sup id="adultSingleTicket"></sup></h2>
                                     </div>
                                 </div>
                                 
@@ -383,10 +386,10 @@
                                         <div id="seniorNumber">0</div>
                                     </div>
                                     <div class="right" onclick="updateCounters(-1,'senior')">
-                                        <img src="imgs/minusSign.png" class="minusSignImg">
+                                        <img src="imgs/minusSign.png" class="minusSignImg" id="seniorMinus">
                                     </div>
                                     <div class="right">    
-                                        <h2><sup id="seniorSingleTicket"></sup>Senior/Disabled</h2>
+                                        <h2>Senior or Disabled<sup id="seniorSingleTicket"></sup></h2>
                                     </div>
                                 </div>
                                 
@@ -397,8 +400,9 @@
                                 </div>
                             </div><!-- end Senior/Disabled Row -->
                             
-
+                            <!-- Submit & Total Row -->
                             <div class="col-md-10 riderHeight totalRow">
+                            	<h2 id="submitButton">Submit</h2>
                 				<h2 class="right" id="totalText">Total</h2>
                				</div>
                 
@@ -406,39 +410,180 @@
                                 <div class="right">
                                     <div id="totalNumber">0</div>
                                 </div>
-                            </div>
-                            
-                        </div><!-- close who's riding -->
-                </div><!-- close 9 point column -->
-            </div><!-- close accordion -->
-
-            <!-- Type of Currency Accepted -->
-            <div class="row">
-            	<div class="col-md-4">
-                	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
-                    <p id="changeMessage">Maximum change $20.00</p>
-                </div>
-            </div>
-            <!-- end Type of Currency Accepted -->
+                            </div><!-- end Submit & Total Row -->
+			        	</div><!-- end Who's Riding? tab -->
+			    	</div><!-- close tab 3 -->
+				</div><!-- close all tabs -->
+			</div><!-- close class tabs -->
             
-            <!-- Moving Alert Bar -->
-            <div class="row">
-                <div class="col-md-12" id="alertBarPosition">
-                        <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
-                        </div>
-                </div>
-            </div><!-- end Moving Alert Bar -->
+            <div class="row" id="checkoutPage">
+            	<div class="col-md-9">
+                	
+                   <div class="tickets" id="secondTicket">
+                   		<img src="imgs/dartLogoWhite.png" class="ticketLogo">
+                            <p id="dateStamp1"></p>
+                            <p id="timeStamp1" class="timeStamp"></p>
+                        
+                   		<p class="ticketTitles">Zone</p>
+    						<p id="secondTicketZone" class="ticketInfo"></p>
+                        <p class="ticketTitles">Duration</p>
+                        <p id="secondTicketDuration" class="ticketInfo"></p>      
+                        <p class="thanksMessage">Thanks for riding with DART!</p> 
+                    </div>
+                    
+                    <div class="tickets" id="firstTicket">
+                   		<img src="imgs/dartLogoWhite.png" class="ticketLogo">
+                        	<p id="dateStamp2"></p>
+                            <p id="timeStamp2" class="timeStamp"></p>
+                        
+                    	<p class="ticketTitles">Zone</p>
+    						<p id="firstTicketZone" class="ticketInfo"></p>
+                        <p class="ticketTitles">Duration</p>
+                        	<p id="firstTicketDuration" class="ticketInfo"></p>   
+                            <p class="thanksMessage">Thanks for riding with DART!</p>   
+                    </div>
+
+                </div><!-- close 9 point column -->
+                
+                <div class="col-md-3">
+                	<h2 class="checkoutMessage">Your total due is</h2>
+                	<p id="checkoutTotal"></p>
+                    <h2 class="checkoutMessage">for</h2>
+                    	<p id="checkoutTicketChild"></p>
+                        <p id="checkoutTicketHighschool"></p>
+                        <p id="checkoutTicketCollege"></p>
+                        <p id="checkoutTicketAdult"></p>
+                        <p id="checkoutTicketSenior"></p>
+                    <h2 class="checkoutMessage" id=""checkoutSingleWord>tickets.</h2>
+                    <h2 id="checkoutBalanceMessage">Pay the balance and look down to pick up your tickets.</h2>
+                </div><!-- close 3 point column -->
+                    
+            </div><!-- close checkoutPage -->
+		</div><!-- close 9 point column -->
+
+
+        <!-- Type of Currency Accepted -->
+        <div class="row" id="currency">
+        	<div class="col-md-12">
+            	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
+                <p id="changeMessage">Maximum change $20.00</p>
+            </div>
+        </div>
+        <!-- end Type of Currency Accepted -->
         
-    	</div> <!-- close div background -->  
+        <!-- Moving Alert Bar -->
+        <div class="row">
+            <div class="col-md-12" id="alertBarPosition">
+                    <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
+                    </div>
+            </div>
+        </div><!-- end Moving Alert Bar -->
+        
     </section><!-- close container ends -->
 </body>
 
 <script>
+	function opacityChange(){
+		if(childCounter == 0){
+			$('#childCost, #childMinus').addClass("opacityZero");
+		}
+		else if(childCounter > 0){
+			$('#childCost, #childMinus').removeClass("opacityZero");
+			document.getElementById("checkoutTicketChild").innerHTML = String(childCounter + " Child");
+		}
+		
+		if(highschoolCounter == 0){
+			$('#highschoolCost, #highschoolMinus').addClass("opacityZero");
+		}
+		else if(highschoolCounter > 0){
+			$('#highschoolCost, #highschoolMinus').removeClass("opacityZero");
+			document.getElementById("checkoutTicketHighschool").innerHTML = String(highschoolCounter + " Highschool");
+		}
+		
+		if(collegeCounter == 0){
+			$('#collegeCost, #collegeMinus').addClass("opacityZero");
+		}
+		else if(collegeCounter > 0){
+			$('#collegeCost, #collegeMinus').removeClass("opacityZero");
+			document.getElementById("checkoutTicketCollege").innerHTML = String(collegeCounter + " College");
+		}
+		
+		if(adultCounter == 0){
+			$('#adultCost, #adultMinus').addClass("opacityZero");
+		}
+		else if(adultCounter > 0){
+			$('#adultCost, #adultMinus').removeClass("opacityZero");
+			document.getElementById("checkoutTicketAdult").innerHTML = String(adultCounter + " Adult");
+		}
+		
+		if(seniorCounter == 0){
+			$('#seniorCost, #seniorMinus').addClass("opacityZero");
+		}
+		else if(seniorCounter > 0){
+			$('#seniorCost, #seniorMinus').removeClass("opacityZero");
+			document.getElementById("checkoutTicketSenior").innerHTML = String(seniorCounter + " Senior or Disabled");
+		}
+	}
+
 	function startTime() {
 	    document.getElementById("date").innerHTML = Date.today().toString("MMMM dd, yyyy");
 	    document.getElementById("time").innerHTML = Date.today().setTimeToNow().toString("h:mm tt");
 	    var t = setTimeout(function(){startTime()},2000);
+		
+		//put date and time stamps on tickets
+		document.getElementById("dateStamp1").innerHTML = Date.today().toString("MMMM dd, yyyy");
+		document.getElementById("dateStamp2").innerHTML = Date.today().toString("MMMM dd, yyyy");
+	    document.getElementById("timeStamp1").innerHTML = Date.today().toString("h:mm tt");
+		document.getElementById("timeStamp2").innerHTML = Date.today().toString("h:mm tt");
 	}
+
+	//TABS
+	//after each option is chosen, move to next tab
+	$("#tab1 div.optionButton").click(function(){
+		$("#tab1").hide();
+			$("ul.tab-links li#tab1tab").removeClass('active');
+		$("#tab2").show();
+			$("ul.tab-links li#tab2tab").addClass('active');
+	});
+	
+	//after each option is chosen, move to next tab
+	$("#tab2 div.optionButton").click(function(){
+		$("#tab2").hide();
+			$("ul.tab-links li#tab2tab").removeClass('active');
+		$("#tab3").show();
+			$("ul.tab-links li#tab3tab").addClass('active');
+	});
+	
+	//if user wants to go back to the 1st tab, move active class
+	$("#tab1tab").click(function(){
+		$("#tab1").show();
+			$("ul.tab-links li#tab1tab").addClass('active');
+		$("#tab2, #tab3").hide();
+			$("ul.tab-links li#tab2tab, ul.tab-links li#tab3tab").removeClass('active');
+	});
+	
+	//if user wants to go back to the 2nd tab, move active class
+	$("#tab2tab").click(function(){
+		$("#tab2").show();
+			$("ul.tab-links li#tab2tab").addClass('active');
+		$("#tab1, #tab3").hide();
+			$("ul.tab-links li#tab1tab, ul.tab-links li#tab3tab").removeClass('active');
+	});
+	
+	//if user wants to go back to the 3rd tab, move active class
+	$("#tab3tab").click(function(){
+		$("#tab3").show();
+			$("ul.tab-links li#tab3tab").addClass('active');
+		$("#tab1, #tab2").hide();
+			$("ul.tab-links li#tab1tab, ul.tab-links li#tab2tab").removeClass('active');
+	});
+	
+	//when submit button is clicked, with .button class added to it, show total and ticket info
+	$("h2#submitButton").click(function(){
+		$("#tab3, .tabs, #alertBarPosition").hide();
+		$("#checkoutPage").show();
+	});
+
 </script>
 
 </html>
