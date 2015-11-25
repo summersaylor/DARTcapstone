@@ -1,9 +1,5 @@
 @charset "UTF-8";
-<<<<<<< HEAD
 /*styles for touch screen*/
-=======
-
->>>>>>> origin/master
 /*import fonts from Google API use for numbers on page 3*/
 /*@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Roboto);*/
@@ -12,11 +8,7 @@
 	height:5.25in;
 	width:8.5in;
 	position:relative;
-<<<<<<< HEAD
 	padding-top:1em;
-=======
-	padding-top:1em
->>>>>>> origin/master
 }
 .container:before{
 	position:absolute;
@@ -82,19 +74,16 @@ ul.tab-links{
         .tab.active {
             display:block;
         }
-<<<<<<< HEAD
 #tab1Value, #tab2Value{
 	text-align:center;	
 }
 #fillerWord{
 	padding-right:20px;
-=======
+}
 .opacityZero{
 	opacity:0;
 }
 #fillerWord{
-	padding-left:30px;
->>>>>>> origin/master
 	display:inline;
 }
 .dartLogo{
@@ -118,11 +107,7 @@ ul.tab-links{
 	height: 2em;	
 	overflow: hidden;
 	position: relative;
-<<<<<<< HEAD
 	margin-left:200px;
-=======
-	background-color:rgba(255,210,3,.15);
->>>>>>> origin/master
 }
 .alertBarText{
 	color:#333;
@@ -173,11 +158,8 @@ ul.tab-links{
 #currency{
 	position:absolute;
 	left:2em;
-<<<<<<< HEAD
 	bottom:-1em;
-=======
 	bottom:3em;
->>>>>>> origin/master
 	width:180px;
 }
 #currencyMessage{
@@ -208,12 +190,8 @@ sup{
     border: 2px solid #17407a;
     border-radius: 5px;
     margin-top:10px;
-<<<<<<< HEAD
 	margin-right:20px;
 	background-color:white;
-=======
-    margin-left:30px;
->>>>>>> origin/master
 }
 	.optionButton :link{
 		color:#17407a;/*DART Blue*/
@@ -224,7 +202,6 @@ sup{
 	}
 	.optionButton :hover{
 		text-decoration:none;
-<<<<<<< HEAD
 	}
 	
 .opacityZero{
@@ -247,8 +224,6 @@ h2#submitButton{
 		color: #17407A !important;
 		border: 2px solid #17407A !important;
 		cursor:pointer;
-=======
->>>>>>> origin/master
 	}
 #totalText{
 	color:#17407a;/*DART Blue*/
