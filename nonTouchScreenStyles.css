@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+/*import fonts from Google API*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);/*use for numbers on page 3*/
+
+.container{
+	height:5.25in;
+	width:8.5in;
+	position:relative;
+}
+.container:before{
+	position:absolute;
+	background-image:url(../imgs/dartMap.jpg);
+	width: 786px;
+    height: 504px;
+	opacity:.07;
+	background-repeat: no-repeat;
+	background-position:75% 70%;/*move background img left and up*/
+	z-index:-1;
+}
+.col-md-12{
+	padding-right:15px;
+}
+.lightSide{/*question text in yellow*/
+	color:#fcd306;/*text against white background is DART yellow*/
+	text-align:center;
+}
+.dartLogo{
+	width:7em;
+	float:left;/*starts dart img at left*/
+}
+#date{
+	font-weight: bold;
+	position: absolute;
+	top: 7em;
+	left:1.5em;
+}
+#time{
+	font-weight: bold;
+	position: absolute;
+	top: 8.5em;
+	left:1.5em;
+}
+.alertBar {
+	height: 2em;	
+	overflow: hidden;
+	position: relative;
+}
+.alertBarText{
+	color:#CA0000;
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1.5em;
+	/* starting position */
+	-moz-transform:translateX(70%);
+	-webkit-transform:translateX(70%);	
+	transform:translateX(70%);
+	/* animate this thing! */	
+	-moz-animation: alertBarText 14s linear infinite;
+	-webkit-animation: alertBarText 14s linear infinite;
+	animation: alertBarText 14s linear infinite;
+}
+#alertBarPosition{
+	top:0;
+	clear:both;
+}
+/* move text on alert bar */
+@-moz-keyframes alertBarText{
+ 0%   { -moz-transform: translateX(100%); }/*where text starts on line (90% over to right on screen)*/
+ 100% { -moz-transform: translateX(-40%); }/*how far to the left the text moves off screen before completing the animation*/
+}
+@-webkit-keyframes alertBarText{
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-40%); }
+}
+@keyframes alertBarText{
+ 0%   { 
+ -moz-transform: translateX(100%); 
+ -webkit-transform: translateX(100%); 
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-40%); 
+ -webkit-transform: translateX(-40%); 
+ transform: translateX(-40%); 
+ }
+}
+.pressed{
+	background-color:rgba(0,0,0,0.2);/*gives background color of black with opacity of 2*/
+	padding-left:.2em;/*give more space for color around text*/
+	padding-right:.2em;/*give more space for color around text*/
+}
+#currencyMessage{
+	color:#980000;
+	font-size:1.2em;
+	line-height:1em;
+	width:14em;
+	top:440px;
+	left:inherit;
+	position:absolute;
+	clear:both;
+}
+#changeMessage{
+	color:#980000;
+	font-weight:bold;
+	line-height:.2em;	
+	top:480px;
+	left:inherit;
+	position:absolute;
+}
+#addSubTicket{
+	font-size:1.1em;
+	text-align:center;
+	padding-top:.15em;
+	background-color:white;
+}
+#addSubTicketBox{
+	border-radius:1px;
+	position:absolute;
+	top:200px;
+	left:inherit;
+	height:1.8em;
+	width:9em;
+	box-shadow:0px 1px 1px 1px #9A9A9A;
+	cursor: pointer;
+}
+#backDuration, #backRiders{
+	color:white;
+	font-size:1.1em;
+	text-align:center;
+	padding-top:.15em;
+}
+#backRidersButton, #backDurationButton{
+	background-color:#17407a;
+	border-radius:1px;
+	position:absolute;
+	top:240px;
+	left:inherit;
+	height:1.8em;
+	width:9em;
+	box-shadow:0px 1px 1px 1px #9A9A9A;
+	cursor: pointer;
+}
+.zone{
+	line-height:1.05in;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
+	.zone :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.zone :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.zone :hover{
+		text-decoration:none;
+	}
+.tripDuration{
+	line-height:1.05in;
+	font-size:2.3em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+}
+	.tripDuration :link{
+		color:#17407a;/*DART Blue*/
+		text-decoration:none;
+	}
+	.tripDuration :visited{
+		color:#17407a;/*DART Blue*/
+	}
+	.tripDuration :hover{
+		text-decoration:none;
+	}
+ .riderRow{
+	font-size:1.8em;
+	color:#17407a;/*DART Blue*/	
+	text-align:right;
+	text-decoration:none;
+	cursor: pointer;
+	margin-bottom:.5in;
+}
+#totalText{
+	color:#17407a;/*DART Blue*/
+	top:0em;
+	left:4.5em;
+	position:absolute;
+	font-size:2em;
+}
+.totalRow{
+	left:0em;
+	top:26em;
+}
+.right {/*places all plus and minus buttons right*/
+	display:inline-block;
+	float:right;
+}
+/*********************************************incrementing numbers*********************************************/
+#childNumber, #highschoolNumber, #collegeNumber, #adultNumber, #seniorNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:1.4em;
+	color:#17407a;/*DART Blue*/
+	padding-left:.2em;
+}
+#childNumber, #highschoolNumber{
+	margin-top:-.05in;
+}
+#collegeNumber, #seniorNumber, #adultNumber{
+	margin-top:.1in;
+}
+#totalNumber{
+	font-family:Roboto, Verdana, Geneva, sans-serif;
+	font-size:2em;
+	color:#17407a;/*DART Blue*/
+}
