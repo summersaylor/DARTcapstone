@@ -69,7 +69,6 @@
 				
 			//update totals
 			updateTotals();
-<<<<<<< HEAD
 			opacityChange();
 			
 			//update tab value
@@ -78,11 +77,7 @@
 			//update checkout page tickets
 			document.getElementById("firstTicketZone").innerHTML = String(regionString);
 			document.getElementById("secondTicketZone").innerHTML = String(regionString);
-=======
-			//move to next tab
-			//$("#tab2").show();
-			//$("#tab1").hide();
->>>>>>> origin/master
+
 		}
 		
 		//assign value to trip duration strings
@@ -100,7 +95,6 @@
 				{time = "5";}
 			//update totals
 			updateTotals();
-<<<<<<< HEAD
 			opacityChange();
 	
 			//update tab value
@@ -109,10 +103,7 @@
 			//update checkout page tickets
 			document.getElementById("firstTicketDuration").innerHTML = String(timeString);
 			document.getElementById("secondTicketDuration").innerHTML = String(timeString);
-=======
-			//move to next tab
-			//$("#accordion").accordion( "option", "active", 2 );
->>>>>>> origin/master
+
 		}
 		//update counters (+/- 1, 'type')
 		function updateCounters(increment, element) {
@@ -266,15 +257,11 @@
         <div class="col-md-9"> 
             <div class="tabs">
 			    <ul class="tab-links">
-<<<<<<< HEAD
+
 			        <li class="active" id="tab1tab"><a href="#tab1">Zone</a><p id="tab1Value"></p></li>
 			        <li id="tab2tab"><a href="#tab2">Duration</a><p id="tab2Value"></p></li>
 			        <li id="tab3tab"><a href="#tab3">Riders</a><p id="tab3Value"></p></li>
-=======
-			        <li class="active"><a href="#tab1">Zone</a></li>
-			        <li><a href="#tab2">Duration</a></li>
-			        <li><a href="#tab3">Riders</a></li>
->>>>>>> origin/master
+
 			    </ul>
 			 
 			    <div class="tab-content">
@@ -288,17 +275,11 @@
 			        <div id="tab2" class="tab">
 			            <h1>How long will your trip last?</h1>
 			            	<div class="optionButton" onclick="updateTime('Day')">Day</div>
-<<<<<<< HEAD
                             <div class="optionButton" onclick="updateTime('2 Hours')">2 Hours</div>
                             <div class="optionButton" id="midday" onclick="updateTime('Midday')">Midday</div>
                             <div class="optionButton" onclick="updateTime('7 Day')">7 Day</div>
                             <div class="optionButton" onclick="updateTime('1 Month')">1 Month</div>
-=======
-                            <div class="optionButton" onclick="updateTime('2 Hour')">2 Hours</div>
-                            <div class="optionButton" id="midday" onclick="updateTime('Midday')">Midday</div>
-                            <div class="optionButton" onclick="updateTime('7 Day')">7 Day</div>
-                            <div class="optionButton" onclick="updateTime('Monthly')">1 Month</div>
->>>>>>> origin/master
+
 			        </div>
 			 
 			        <div id="tab3" class="tab">
@@ -365,11 +346,7 @@
                                         <img src="imgs/minusSign.png" class="minusSignImg" id="collegeMinus">
                                     </div>
                                     <div class="right">    
-<<<<<<< HEAD
                                         <h2>College or Trade School<sup id="collegeSingleTicket"></sup></h2>
-=======
-                                        <h2><sup id="collegeSingleTicket"></sup>College or Trade School</h2>
->>>>>>> origin/master
                                     </div>
                                 </div>
                                 
@@ -417,11 +394,7 @@
                                         <img src="imgs/minusSign.png" class="minusSignImg" id="seniorMinus">
                                     </div>
                                     <div class="right">    
-<<<<<<< HEAD
                                         <h2>Senior or Disabled<sup id="seniorSingleTicket"></sup></h2>
-=======
-                                        <h2><sup id="seniorSingleTicket"></sup>Senior or Disabled</h2>
->>>>>>> origin/master
                                     </div>
                                 </div>
                                 
@@ -434,11 +407,7 @@
                             
                             <!-- Submit & Total Row -->
                             <div class="col-md-10 riderHeight totalRow">
-<<<<<<< HEAD
                             	<h2 id="submitButton">Submit</h2>
-=======
-                            	<h2>Submit</h2>
->>>>>>> origin/master
                 				<h2 class="right" id="totalText">Total</h2>
                				</div>
                 
@@ -451,7 +420,7 @@
 			    	</div><!-- close tab 3 -->
 				</div><!-- close all tabs -->
 			</div><!-- close class tabs -->
-<<<<<<< HEAD
+
             
             <div class="row" id="checkoutPage">
             	<div class="col-md-9">
@@ -498,18 +467,13 @@
             </div><!-- close checkoutPage -->
 		</div><!-- close 9 point column -->
 
-
-=======
 		</div><!-- close 9 point column -->
 
-
->>>>>>> origin/master
         <!-- Type of Currency Accepted -->
         <div class="row" id="currency">
         	<div class="col-md-12">
             	<p id="currencyMessage">This machine accepts coins, bills, and credit cards.</p>
                 <p id="changeMessage">Maximum change $20.00</p>
-<<<<<<< HEAD
             </div>
         </div>
         <!-- end Type of Currency Accepted -->
@@ -520,7 +484,6 @@
                     <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
                     </div>
             </div>
-=======
             </div>
         </div>
         <!-- end Type of Currency Accepted -->
@@ -531,7 +494,6 @@
                     <div class="alertBar"><p class="alertBarText">Blue Line Rail Service is currently down.</p>
                     </div>
             </div>
->>>>>>> origin/master
         </div><!-- end Moving Alert Bar -->
         
     </section><!-- close container ends -->
@@ -539,7 +501,6 @@
 
 <script>
 	function opacityChange(){
-<<<<<<< HEAD
 		if(childCounter == 0){
 			$('#childCost, #childMinus').addClass("opacityZero");
 		}
@@ -578,13 +539,6 @@
 		else if(seniorCounter > 0){
 			$('#seniorCost, #seniorMinus').removeClass("opacityZero");
 			document.getElementById("checkoutTicketSenior").innerHTML = String(seniorCounter + " Senior or Disabled");
-=======
-		if(childcounter == 0){//working in this
-			$(childCost).addClass(opacityZero);
-		}
-		else{
-			$()removeClass(opacityZero);
->>>>>>> origin/master
 		}
 	}
 
@@ -600,7 +554,6 @@
 		document.getElementById("timeStamp2").innerHTML = Date.today().toString("h:mm tt");
 	}
 
-<<<<<<< HEAD
 	//TABS
 	//after each option is chosen, move to next tab
 	$("#tab1 div.optionButton").click(function(){
@@ -646,20 +599,7 @@
 	$("h2#submitButton").click(function(){
 		$("#tab3, .tabs, #alertBarPosition").hide();
 		$("#checkoutPage").show();
-	});
-
-=======
-	//tabs
-	$('.tabs .tab-links a').on('click', function(e)  {
-        var currentAttrValue = $(this).attr('href');
- 
-        //show/hide tabs
-        $('.tabs ' + currentAttrValue).show().siblings().hide();
- 
-        //change tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
     });
->>>>>>> origin/master
 </script>
 
 </html>
