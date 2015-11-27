@@ -550,8 +550,8 @@
 		//put date and time stamps on tickets
 		document.getElementById("dateStamp1").innerHTML = Date.today().toString("MMMM dd, yyyy");
 		document.getElementById("dateStamp2").innerHTML = Date.today().toString("MMMM dd, yyyy");
-	    document.getElementById("timeStamp1").innerHTML = Date.today().toString("h:mm tt");
-		document.getElementById("timeStamp2").innerHTML = Date.today().toString("h:mm tt");
+	    document.getElementById("timeStamp1").innerHTML = Date.today().setTimeToNow().toString("h:mm tt");
+		document.getElementById("timeStamp2").innerHTML = Date.today().setTimeToNow().toString("h:mm tt");
 	}
 
 	//TABS
