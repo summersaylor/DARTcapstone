@@ -119,13 +119,10 @@
 }
 #addSubTicketBox{
 	background-color: #FFFFFF;
-	border-radius: 2px;
-    border: 2px solid #17407A;
     position: absolute;
     top: 200px;
     left: inherit;
-    height: 2.6em;
-    width: 9em;
+    width: 7em;
     cursor: pointer;
 }
 #backDuration, #backRiders{
@@ -137,13 +134,10 @@
 }
 #backRidersButton, #backDurationButton{
 	background-color: #FFFFFF;
-    border: 2px solid #17407A;
-    border-radius: 2px;
     position: absolute;
     top: 310px;
     left: inherit;
-    height: 2.6em;
-    width: 9em;
+    width: 4em;
     cursor: pointer;
 }
 .zone{
@@ -208,19 +202,15 @@
 /*button is greyed out until riders are 1+*/
 h2#submitButton{
 	margin-top: -1em;
-    margin-left: -7em;
+    margin-left: -7.5em;
     color: #BFBFBF;
-    border: 2px solid #BFBFBF;
-    border-radius: 5px;
     width: 5.5em;
-    height: 1.5em;
     padding-left: .9em;
     padding-top: .1em;	
 }
 	/*class added to submit button when 1+ riders*/
 	.button{
 		color: #17407A !important;
-		border: 2px solid #17407A !important;
 		cursor:pointer;
 	}
 /*********************************************incrementing numbers*********************************************/
