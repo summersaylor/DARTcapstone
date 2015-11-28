@@ -23,8 +23,8 @@
 .col-md-12{
 	padding-right:15px;
 }
-.lightSide{/*question text in yellow*/
-	color:#fcd306;/*text against white background is DART yellow*/
+.lightSide{
+	color:#333333;
 	text-align:center;
 }
 .dartLogo{
