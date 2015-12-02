@@ -504,8 +504,11 @@
 	
 	//when submit button is clicked, with .button class added to it, show total and ticket info
 	$("h2#submitButton").click(function(){
-		$("#tab3, .tabs, #alertBarPosition, #backRidersButton, #addSubTicketBox, #submitButton, #ridersResponse, #riders, #currencyMessage, #changeMessage, #totalNumber, #totalText").hide();
-		$("#checkoutPage").show();
+		if($("#submitButton").hasClass("button"))
+		{
+			$("#tab3, .tabs, #alertBarPosition, #backRidersButton, #addSubTicketBox, #submitButton, #ridersResponse, #riders, #currencyMessage, #changeMessage, #totalNumber, #totalText").hide();
+			$("#checkoutPage").show();
+		}
 	});
 	
 	//hide duration and riders on load
